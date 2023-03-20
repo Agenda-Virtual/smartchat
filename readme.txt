@@ -1,4 +1,4 @@
-=== Agenda Virtual ===
+=== Smartchat ===
 
 Contributors: agendavirtual
 Donate link: https://agendavirutal.net/
@@ -10,51 +10,54 @@ Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-O plugin Agenda Virtual para WordPress permite que os clientes agendem compromissos por meio de um botão flutuante no site do seu negócio. A ferramenta oferece uma experiência de agendamento online fácil e conveniente para clientes e empresas.
+Transforme a interação com seus clientes com nosso incrível plugin de assistente virtual, que utiliza a inteligência artificial do ChatGPT para fornecer respostas precisas e eficientes em tempo real. Insira facilmente informações importantes para que a assistente virtual possa personalizar as respostas de acordo com as necessidades dos usuários e aprimorar a experiência do cliente.
 
 == Instalação ==
 
-Faça o download do plugin Agenda Virtual para WordPress.
+Faça o download do plugin Smartchat para WordPress.
 Faça o upload do plugin para o diretório /wp-content/plugins/ do seu site.
 Ative o plugin por meio do menu "Plugins" no WordPress.
 == Como usar ==
 
-Para usar o plugin Agenda Virtual, basta preencher as informações solicitadas na guia "Agenda Virtual" no menu da área administrativa de seu site Wordpress e o botão flutuante de agendamento aparecerá nas páginas de seu site.
+Para usar o plugin Smartchat, basta preencher as informações solicitadas na guia "Smartchat" no menu da área administrativa de seu site Wordpress e o botão flutuante de agendamento aparecerá nas páginas de seu site.
 
 == Requisitos ==
 
-O plugin Agenda Virtual requer a versão mínima do WordPress 4.9.0.
+O plugin Smartchat requer a versão mínima do WordPress 4.9.0.
 O plugin requer a versão mínima do PHP 5.6.
 == Suporte ==
 
-Para obter suporte, entre em contato com a equipe da Agenda Virtual por meio do formulário de contato em nosso site.
+Para obter suporte, entre em contato com a equipe da Smartchat por meio do formulário de contato em nosso site.
 
 == Perguntas frequentes ==
 
-Q: O plugin Agenda Virtual é gratuito?
-A: Sim, o plugin Agenda Virtual é gratuito para download e uso.
+Q: O plugin Smartchat é gratuito?
+A: Sim, o plugin Smartchat é gratuito para download e uso.
 
 Q: Posso personalizar a aparência do botão de agendamento?
 A: Sim, você pode personalizar a aparência do botão de agendamento por meio das configurações do plugin.
 
-Q: O plugin Agenda Virtual funciona em dispositivos móveis?
-A: Sim, o plugin Agenda Virtual é responsivo e funciona em dispositivos móveis.
+Q: O plugin Smartchat funciona em dispositivos móveis?
+A: Sim, o plugin Smartchat é responsivo e funciona em dispositivos móveis.
 
 == Histórico de versões ==
 
-= 1.01 =
+= 2.05 =
+Novos recursos incorporados.
 
+= 2.01 =
 Corrigido problema de compatibilidade com algumas versões do WordPress.
-= 1.0 =
 
-Versão inicial do plugin Agenda Virtual para WordPress.
+= 2.0 =
+Versão inicial do plugin Smartchat para WordPress.
+
 == Créditos ==
 
-O plugin Agenda Virtual foi desenvolvido por Agenda Virtual. Agradecemos a todos os usuários que forneceram feedback e contribuíram para melhorias no plugin.
+O plugin Smartchat foi desenvolvido por Smartchat. Agradecemos a todos os usuários que forneceram feedback e contribuíram para melhorias no plugin.
 
 == Notas adicionais ==
 
-O plugin Agenda Virtual é distribuído sob a Licença GPL2.
+O plugin Smartchat é distribuído sob a Licença GPL2.
 
 GNU GENERAL PUBLIC LICENSE
 Version 2, June 1991

@@ -1,15 +1,38 @@
 <?php
 /*
-Plugin Name: Agenda Virtual2
-Plugin URI: https://agendavirtual.net/plugin
-Description: O plugin Agenda Virtual para WordPress permite que os clientes agendem compromissos por meio de um botão flutuante no site do seu negócio. A ferramenta oferece uma experiência de agendamento online fácil e conveniente para clientes e empresas.
-Version: 2.0.3
-Author: Agenda Virtual
-Author URI: https://agendavirtual.net
+Plugin Name: Smartchat
+Plugin URI: https://smartchat.agendavirtual.net/plugin
+Description: Transforme a interação com seus clientes com nosso incrível plugin de assistente virtual, que utiliza a inteligência artificial do ChatGPT para fornecer respostas precisas e eficientes em tempo real. Insira facilmente informações importantes para que a assistente virtual possa personalizar as respostas de acordo com as necessidades dos usuários e aprimorar a experiência do cliente.
+Version: 2.0.5
+Author: Smartchat
+Author URI: https://smartchat.agendavirtual.net
 License: GPL2
 */
 
-// Adicione funções e ações do seu plugin abaixo deste cabeçalho.
+require_once 'plugin-update-checker/plugin-update-checker.php';
+
+/*
+ * Plugin Update Checker Setting
+ *
+ * @see https://github.com/YahnisElsts/plugin-update-checker for more details.
+ */
+function smartchat_update_checker_setting() {
+	if ( ! is_admin() || ! class_exists( 'Puc_v4_Factory' ) ) {
+		return;
+	}
+
+	$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+		'https://github.com/Agenda-Virtual/smartchat/',
+		__FILE__,
+		'smartchat'
+	);
+
+	// (Opcional) Set the branch that contains the stable release.
+	$myUpdateChecker->setBranch('20-03-23_2');
+}
+
+add_action( 'admin_init', 'smartchat_update_checker_setting' );
+
 // Carrega o script JavaScript
 function plugin_agenda_virtual() {
     global $wpdb;
@@ -46,8 +69,8 @@ function agenda_virtual_admin_menu() {
 	wp_enqueue_style( 'agenda-virtual-script', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css');
 
 	add_menu_page(
-		'Agenda Virtual',
-		'Agenda Virtual',
+		'Smartchat',
+		'Smartchat',
 		'manage_options',
 		'agenda-virtual-admin',
 		'agenda_virtual_admin_page'
