@@ -1,0 +1,31 @@
+<?php
+$lang = array(
+    'subtitle' => 'Bereit, um deinen virtuellen Assistenten noch besser zu machen?',
+    'subtitle_2' => 'Lass uns anfangen!',
+    'assistant_name' => 'Name des virtuellen Assistenten',
+    'assistant_name_placeholder' => 'Gib hier den Namen des Assistenten ein',
+    'speaking_style' => 'Sprachstil des virtuellen Assistenten',
+    'speaking_style_formal' => 'Formell: Respektvoll und professionell für Geschäftssituationen oder Kundenservice.',
+    'speaking_style_friendly' => 'Freundlich: Warm und emotional verbindend mit dem Benutzer.',
+    'speaking_style_fun' => 'Spaßig: Verspielt und entspannt, schafft eine angenehme Atmosphäre.',
+    'speaking_style_polite' => 'Höflich: Höflich und freundlich, zeigt Respekt und Rücksichtnahme gegenüber dem Benutzer.',
+    'speaking_style_technical' => 'Technisch: Präzise und objektiv, bietet detaillierte technische Informationen.',
+    'speaking_style_empathetic' => 'Empathisch: Verständnisvoll, zeigt Solidarität mit dem Benutzer.',
+    'speaking_style_youthful' => 'Jugendlich: Entspannt und jugendlich, schafft eine informelle Atmosphäre.',
+    'speaking_style_direct' => 'Direkt: Zielgerichtet, bietet kurze und präzise Antworten auf Fragen.',
+    'language' => 'Sprache',
+    'main_informations' => 'Wichtige Informationen',
+    'maximum' => 'Max.',
+    'characters' => 'Zeichen',
+    'maximum_characters_placeholder' => 'Lass uns diese Konversation interessanter machen! Hier kannst du mir alles erzählen, was ich über dein Geschäft wissen muss. Teile mir deine Kontakte, Adresse, tolle Produkte, verlockende Angebote und Zahlungsmethoden mit, die alle zum Lächeln bringen werden. =)',
+    'button_color' => 'Buttonfarbe',
+    'choose_icon' => 'Icon auswählen',
+    'position' => 'Position',
+    'position_bottom_right' => 'Unten rechts',
+    'position_bottom_left' => 'Unten links',
+    'position_top_right' => 'Oben rechts',
+    'position_top_left' => 'Oben links',
+    'save' => 'Speichern',
+    'password' => 'Passwort'
+);
+?>
