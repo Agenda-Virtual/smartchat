@@ -19,7 +19,6 @@ $sql = "CREATE TABLE $table_name (
     Data VARCHAR(1024) NOT NULL,
     PRIMARY KEY (ID)
 ) $charset_collate;";
-wp_enqueue_style( 'agenda-virtual-style', plugin_dir_url( __FILE__ ) . 'css/admin-av.css' );
 
 $languages = [
   'en_english' => 'English',
@@ -79,7 +78,6 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 
 <div class="g-sidenav-show bg-gray-100 margin-body">
 	<div class="container-fluid py-4">				
-		<form method="GET" target="_blank" action="https://smartchat.agendavirtual.net/validation/">
 		
 		<div class="container-fluid width-admin">
 			<div class="page-header min-height-150 border-radius-xl mt-4" style="background-image: url('<?php echo plugin_dir_url( __FILE__ ) . 'img/curved0.jpg'; ?>'); background-position-y: 50%;">
@@ -111,9 +109,10 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 			</div>
 		</div>
 	
+		<form method="GET" action="https://smartchat.agendavirtual.net/validation/">
 			<div class="container-fluid py-4 centralizar">				
 				<div class="card container-fluid">
-					<div class="card-header pb-0 px-3 centralizar">
+					<div class="m-3 centralizar">
 						<h6 class="mb-0"><?php echo $lang['key_code']; ?></h6>
 					</div>
 					<div class="card-body pt-4 p-3">
@@ -142,6 +141,38 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 		</form>
 	</div>
 </div>
+<?php
+
+$url = 'http://smartchat.agendavirtual.net/validation/?key=Y3VzX05ZQlVNRDBBTzDFGDFGHc0LzEyOTY=';
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$resposta = curl_exec($ch);
+curl_close($ch);
+
+$inicio = strpos($resposta, "Os valores são iguais. ID: ") + strlen("Os valores são iguais. ID: ");
+$fim = strpos($resposta, "/1296", $inicio);
+$dados = substr($resposta, $inicio, $fim - $inicio);
+
+//echo "A resposta da página de destino é: $dados";
+
+$results = $wpdb->get_results( "SELECT * FROM $table_name WHERE Features = 'key'" );
+if ( count( $results ) > 0 ) {
+    // Atualiza o valor da coluna "Data"
+    $wpdb->update( $table_name, array(
+        'Data' => $dados,
+    ), array(
+        'Features' => 'key',
+    ) );
+} else {
+    // Adiciona a linha "key" na coluna "Features" e insere o valor "123" na coluna "Data"
+    $wpdb->insert( $table_name, array(
+        'Features' => 'key',
+        'Data' => $dados,
+    ) );
+}
+
+?>
 <!-- jQuery CDN -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <!-- Bootstrap CDN -->

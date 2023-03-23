@@ -19,7 +19,6 @@ $sql = "CREATE TABLE $table_name (
     Data VARCHAR(1024) NOT NULL,
     PRIMARY KEY (ID)
 ) $charset_collate;";
-wp_enqueue_style( 'agenda-virtual-style', plugin_dir_url( __FILE__ ) . 'css/admin-av.css' );
 require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 dbDelta( $sql );
 
@@ -114,16 +113,6 @@ if (isset($_POST['submit'])) {
 }
 
 $max_info_characters = "1000";
-
-if ($wpdb->get_var("SELECT COUNT(*) FROM $table_name WHERE Features = 'Key'") > 0) {
-  $key_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'Key'");
-  if ($key_result[0]->Data != '') {
-    echo "OK key";
-  } else {
-    echo "Não key";
-  }
-}
-
 
 // código para buscar os valores armazenados na tabela e preencher os campos correspondentes, caso existam
 $nome_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'Cor'");
@@ -271,7 +260,7 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 	
 			<div class="container-fluid py-4 centralizar">				
 				<div class="card container-fluid">
-					<div class="card-header pb-0 px-3">
+					<div class="m-3">
 						<h6 class="mb-0"><?php echo $lang['subtitle'] . "<br/>" . $lang['subtitle_2']; ?></h6>
 					</div>
 					<div class="card-body pt-4 p-3">
