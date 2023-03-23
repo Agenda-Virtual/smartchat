@@ -22,6 +22,9 @@
 	padding: 6px 12px;
 	border-radius: 5px 0 0 5px;
 }
+.logo_box_chat{
+	filter: opacity(0.8);
+}
 
 .bottom-chat {
   bottom: 22px;

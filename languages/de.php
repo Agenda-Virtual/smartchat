@@ -28,6 +28,9 @@ $lang = array(
     'save' => 'Speichern',
     'password' => 'Passwort',
 	'key_code' => 'Schlüsselcode',
-    'key_code_here' => 'Bitte geben Sie hier den Schlüsselcode ein, um die Pro-Version freizuschalten.'
+    'key_code_here' => 'Bitte geben Sie hier den Schlüsselcode ein, um die Pro-Version freizuschalten.',
+	'simulate_real_conversation' => 'Eine Konversation mit einem Mitarbeiter simulieren',
+	'simulate_real_conversation_help' => 'Die Simulation einer Konversation mit einem Mitarbeiter verzögert die Antwort aufgrund der Textgröße und zeigt auch "Schreibt..." an, während der Benutzer auf die Antwort wartet.',
+	'show_logo' => 'Smartchat-Logo anzeigen'
 );
 ?>

@@ -28,6 +28,9 @@ $lang = array(
     "save" => "Salva",
     "password" => "Password",
     'key_code' => 'Codice Chiave',
-    'key_code_here' => 'Incolla qui il codice chiave per sbloccare la versione Pro.'
+    'key_code_here' => 'Incolla qui il codice chiave per sbloccare la versione Pro.',
+	'simulate_real_conversation' => 'Simulare una conversazione con un assistente',
+	"simulate_real_conversation_help" => "La simulazione di una conversazione con un assistente ritarda l'invio della risposta in base alla lunghezza del testo, e mostra anche 'Digitando...' mentre l'utente attende la risposta.",
+	'show_logo' => 'Mostra il logo di Smartchat'
 );
 ?>

@@ -35,6 +35,7 @@ if (count($language_result) > 0) {
 var url = "https://wsgi.agendavirtual.net/bot";
 //var url = "https://01cb-52-207-162-32.ngrok.io/bot";
 var historico = "";
+var timeWait = "0";
 
 $(document).ready(function() {
 
@@ -62,25 +63,22 @@ $(document).ready(function() {
 			message = "Previous message: " + historico + '. ' + personalidade + '. ' + language + ', ' + frase + ', ' + nome + '. Answer only the question ahead:' + message + ".";
 			historico = "";
 		}
-
-        $.post(url, {Body: message}, function(data) {
-            data = data.replace(/(^\s*<\?xml[^>]*>\s*<Response>\s*<Message>\s*)/g, ''); // removes XML header and opening tags
-			data = data.replace(/<\/Message>\s*<\/Response>/g, ''); // removes closing tags
-			data = data.replace(/(https?:\/\/[^\s]+)|(www.[^\s]+)/g, function(match) {
-				if (match.startsWith("http")) {
-					return '<a href="' + match + '" target="_blank">' + match + '</a>';
-				} else {
-					return '<a href="http://' + match + '" target="_blank">' + match + '</a>';
-				}
+			$.post(url, {Body: message}, function(data) {
+				data = data.replace(/(^\s*<\?xml[^>]*>\s*<Response>\s*<Message>\s*)/g, ''); // removes XML header and opening tags
+				data = data.replace(/<\/Message>\s*<\/Response>/g, ''); // removes closing tags
+				data = data.replace(/(https?:\/\/[^\s]+)|(www.[^\s]+)/g, function(match) {
+					if (match.startsWith("http")) {
+						return '<a href="' + match + '" target="_blank">' + match + '</a>';
+					} else {
+						return '<a href="http://' + match + '" target="_blank">' + match + '</a>';
+					}
+				});
+				$("#chat-log").append("<li class='clearfix'><p class='message other-message float-right' style='display:none'><b><?php echo $URL; ?>:</b> " + data + "</p></li>");
+				$(".message:last").fadeIn(150)
+				historico = data;
+				$('#virtual-assistant-box').scrollTop($('#virtual-assistant-box')[0].scrollHeight);
 			});
-			$("#chat-log").append("<li class='clearfix'><p class='message other-message float-right' style='display:none'><b><?php echo $URL; ?>:</b> " + data + "</p></li>");
-			$(".message:last").fadeIn(150)
-			historico = data;
-			$('#virtual-assistant-box').scrollTop($('#virtual-assistant-box')[0].scrollHeight);
-        });
-		
         $("#message").val("");
-			//alert(message);
     });
 });
 </script>
@@ -102,6 +100,9 @@ $(document).ready(function() {
 			<div class="input-group-prepend">
 				<button class="input-group-text" id="submit"><i class="button-message fas fa-location-arrow"></i></button>
 			</div>
+		</div>
+		<div class="logo_box_chat">
+			<img src="<?php echo plugin_dir_url( __FILE__ ) . 'img/logo_smartchat.png' ?>" alt="Logo Smartchat" width="70px">
 		</div>
 	</div>
 </div>

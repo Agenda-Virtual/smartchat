@@ -35,6 +35,8 @@ if (isset($_POST['submit'])) {
   $language = $language_parts[1];
   $acronym = $language_parts[0];
   $info = sanitize_text_field($_POST['info']);
+  $time = isset($_POST['time']) && $_POST['time'] == '1' ? '1' : '0';
+  $show_logo = isset($_POST['show_logo']) && $_POST['show_logo'] == '1' ? '1' : '0';
 
   $nome_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'Cor'");
   if (count($nome_result) > 0) {
@@ -70,6 +72,20 @@ if (isset($_POST['submit'])) {
   } else {
     $wpdb->insert($table_name, array('Features' => 'info', 'Data' => $info));
   }
+  
+  $time_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'time'");
+  if (count($time_result) > 0) {
+    $wpdb->update($table_name, array('Data' => $time), array('Features' => 'time'));
+  } else {
+    $wpdb->insert($table_name, array('Features' => 'time', 'Data' => $time));
+  } 
+  
+  $show_logo_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'show_logo'");
+  if (count($show_logo_result) > 0) {
+    $wpdb->update($table_name, array('Data' => $show_logo), array('Features' => 'show_logo'));
+  } else {
+    $wpdb->insert($table_name, array('Features' => 'show_logo', 'Data' => $show_logo));
+  }
 
   $position_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'position'");
   if (count($position_result) > 0) {
@@ -98,6 +114,16 @@ if (isset($_POST['submit'])) {
 }
 
 $max_info_characters = "1000";
+
+if ($wpdb->get_var("SELECT COUNT(*) FROM $table_name WHERE Features = 'Key'") > 0) {
+  $key_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'Key'");
+  if ($key_result[0]->Data != '') {
+    echo "OK key";
+  } else {
+    echo "Não key";
+  }
+}
+
 
 // código para buscar os valores armazenados na tabela e preencher os campos correspondentes, caso existam
 $nome_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'Cor'");
@@ -128,6 +154,18 @@ $info_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'i
 $info = '';
 if (count($info_result) > 0) {
   $info = $info_result[0]->Data;
+}
+
+$time_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'time'");
+$time = '';
+if (count($time_result) > 0) {
+  $time = $time_result[0]->Data;
+}
+
+$show_logo_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'show_logo'");
+$show_logo = '';
+if (count($show_logo_result) > 0) {
+  $show_logo = $show_logo_result[0]->Data;
 }
 
 $position_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'position'");
@@ -237,8 +275,6 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 						<h6 class="mb-0"><?php echo $lang['subtitle'] . "<br/>" . $lang['subtitle_2']; ?></h6>
 					</div>
 					<div class="card-body pt-4 p-3">
-						
-							
 							<div class="row">
 								<!-- Nome de usuário -->				
 								<div class="col-md-4">
@@ -291,7 +327,6 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 										<button class="btn btn-secondary" data-placement="left" data-icon="<?php echo $icon; ?>" role="iconpicker"></button>
 									</div>
 								</div>
-								
 								<!-- Posição -->
 								<div class="col-md-6">
 									<div class="form-group">
@@ -302,6 +337,23 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 											<option value="superior_direito" <?php echo ($position === 'superior_direito') ? 'selected' : ''; ?>><?php echo $lang['position_top_right']; ?></option>
 											<option value="superior_esquerdo" <?php echo ($position === 'superior_esquerdo') ? 'selected' : ''; ?>><?php echo $lang['position_top_left']; ?></option>
 										  </select>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<!-- Tempo de resposta -->				
+								<div class="col-md-6">
+									<div class="form-group">
+										<input type="checkbox" id="time" name="time" value="1" <?php echo $time == '1' ? 'checked' : ''; ?>>
+										<label class="form-control-label" for="time"><?php echo $lang['simulate_real_conversation']; ?></label></br>
+									</div>
+								</div>
+								
+								<!-- Logo -->	
+								<div class="col-md-6">
+									<div class="form-group">
+										<input type="checkbox" id="show_logo" name="show_logo" value="1" <?php echo $show_logo == '1' ? 'checked' : ''; ?>>
+										<label class="form-control-label" for="show_logo"><?php echo $lang['show_logo']; ?></label></br>
 									</div>
 								</div>
 							</div>
@@ -317,7 +369,5 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 		</form>
 	</div>
 </div>
-<!-- jQuery CDN -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <!-- Bootstrap CDN -->
-<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js?v=2"></script>
