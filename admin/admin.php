@@ -195,129 +195,128 @@ if (count($language_result) > 0) {
 }
 
 // Load language file
-include_once 'languages/' . $acronym . '.php';
+include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php' );
 ?>
-<form method="post">
 <div class="g-sidenav-show bg-gray-100 margin-body">
 	<div class="container-fluid py-4">				
+		<form method="post">
 		
 		<div class="container-fluid width-admin">
-        <div class="page-header min-height-150 border-radius-xl mt-4" style="background-image: url('<?php echo plugin_dir_url( __FILE__ ) . 'img/curved0.jpg'; ?>'); background-position-y: 50%;">
-            <span class="mask bg-gradient-primary opacity-6"></span>
-        </div>
-        <div class="card card-body blur shadow-blur mx-4 mt-n6">
-            <div class="row gx-4">
-                <div class="col-auto">
-                    <div href="https://agendavirtual.net/app" class="m-5 text-center ">
-						<img src="<?php echo plugin_dir_url( __FILE__ ) . 'img/Logo_Agenda_Virtual.png'; ?>" alt="Logo Agenda Virtual" width="200px" height="auto">
-					</div>
-                </div>
-                <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
-                    <div class="nav-wrapper position-relative end-0 text-center">
-						<label class="form-control-label" for="language"><?php echo strtoupper($lang['language']); ?></label></br>
-						<!-- idioma -->				
-						<div class="col-md-12">
-							<div class="form-group">
-								<select id="language" name="language">
-								<?php foreach ($languages as $code => $language): ?>
-								  <option value="<?php echo $code; ?>"<?php if ($code === $acronym_sql . "_" . $language_sql) { echo ' selected'; } ?>><?php echo $language; ?></option>
-								<?php endforeach; ?>
-								</select>
-							</div>
-						</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-	
-	<div class="container-fluid py-4 centralizar">				
-		<div class="card">
-			<div class="card-header pb-0 px-3">
-				<h6 class="mb-0"><?php echo $lang['subtitle'] . "<br/>" . $lang['subtitle_2']; ?></h6>
+			<div class="page-header min-height-150 border-radius-xl mt-4" style="background-image: url('<?php echo plugin_dir_url( __FILE__ ) . 'img/curved0.jpg'; ?>'); background-position-y: 50%;">
+				<span class="mask bg-gradient-primary opacity-6"></span>
 			</div>
-			<div class="card-body pt-4 p-3">
-				
-					
-					<div class="row">
-						<!-- Nome de usuário -->				
-						<div class="col-md-4">
-							<div class="form-group">
-								<label class="form-control-label" for="url"><?php echo $lang['assistant_name']; ?></label>
-								<input class="form-control" value="<?php echo $url; ?>" placeholder="<?php echo $lang['assistant_name_placeholder']; ?>" type="text" name="url" required="" autocomplete="off" autofocus="">
-							</div>
+			<div class="card card-body blur shadow-blur mx-4 mt-n6">
+				<div class="row gx-4">
+					<div class="col-auto">
+						<div href="https://agendavirtual.net/app" class="m-5 text-center ">
+							<img src="<?php echo plugin_dir_url( __FILE__ ) . 'img/Logo_Agenda_Virtual.png'; ?>" alt="Logo Agenda Virtual" width="200px" height="auto">
 						</div>
-						
-						<!-- Personalidade -->	
-						<div class="col-md-8">
-							<div class="form-group">
-								<label class="form-control-label" for="personality"><?php echo $lang['speaking_style']; ?></label></br>
-								<select class="form-control" name="personality" required>
-									<option value="formal, respectful, and professional" <?php echo ($personality === 'formal, respectful, and professional') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_formal']; ?></option>
-									<option value="friendly, establishing an emotional connection" <?php echo ($personality === 'friendly, establishing an emotional connection') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_friendly']; ?></option>
-									<option value="fun, playful, and relaxed" <?php echo ($personality === 'fun, playful, and relaxed') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_fun']; ?></option>
-									<option value="polite, courteous, and refined" <?php echo ($personality === 'polite, courteous, and refined') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_polite']; ?></option>
-									<option value="technical, precise, and objective, providing detailed information" <?php echo ($personality === 'technical, precise, and objective, providing detailed information') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_technical']; ?></option>
-									<option value="empathetic, understanding, showing solidarity and concern" <?php echo ($personality === 'empathetic, understanding, showing solidarity and concern') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_empathetic']; ?></option>
-									<option value="youthful, relaxed, and informal" <?php echo ($personality === 'youthful, relaxed, and informal') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_youthful']; ?></option>
-									<option value="direct, offering brief and precise answers" <?php echo ($personality === 'direct, offering brief and precise answers') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_direct']; ?></option>
-								  </select>
+					</div>
+					<div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+						<div class="nav-wrapper position-relative end-0 text-center">
+							<label class="form-control-label" for="language"><?php echo strtoupper($lang['language']); ?></label></br>
+							<!-- idioma -->				
+							<div class="col-md-12">
+								<div class="form-group">
+									<select id="language" name="language">
+									<?php foreach ($languages as $code => $language): ?>
+									  <option value="<?php echo $code; ?>"<?php if ($code === $acronym_sql . "_" . $language_sql) { echo ' selected'; } ?>><?php echo $language; ?></option>
+									<?php endforeach; ?>
+									</select>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="row">
-						<!-- Informações -->				
-						<div class="col-md-12">
-							<div class="form-group">
-								<label class="form-control-label" for="info"><?php echo $lang['main_informations']; ?></label><label class="form-control-label text-muted"><?php echo $lang['maximum'] . " " . $max_info_characters . " " . $lang['characters']; ?></label></br>
-								<textarea class="form-control form-control-lg" name="info" rows="5" maxlength="<?php echo $max_info_characters; ?>" placeholder="<?php echo $lang['maximum_characters_placeholder']; ?>"><?php echo $info; ?></textarea>
-							</div>
-						</div>
-					</div>
-
-					<input type="hidden" name="visible" value="1">
-					<div class="row"> 
-						<!-- Cor do botão -->
-						<div class="col-md-3">
-							<div class="form-group">
-								<label class="form-control-label" for="cor"><?php echo $lang['button_color']; ?></label>
-								<input class="form-control form-control-solid" value="<?php echo $cor; ?>" type="color" name="cor">
-							</div>
-						</div>
-						<!-- Icon Picker -->
-						<div class="col-md-3">
-							<div class="form-group">
-								<label class="form-control-label" for="cor"><?php echo $lang['choose_icon']; ?></label>
-								<button class="btn btn-secondary" data-placement="left" data-icon="<?php echo $icon; ?>" role="iconpicker"></button>
-							</div>
-						</div>
-						
-						<!-- Posição -->
-						<div class="col-md-6">
-							<div class="form-group">
-								<label class="form-control-label" for="position"><?php echo $lang['position']; ?></label></br>
-								<select class="form-control" name="position" required>
-									<option value="inferior_direito" <?php echo ($position === 'inferior_direito') ? 'selected' : ''; ?>><?php echo $lang['position_bottom_right']; ?></option>
-									<option value="inferior_esquerdo" <?php echo ($position === 'inferior_esquerdo') ? 'selected' : ''; ?>><?php echo $lang['position_bottom_left']; ?></option>
-									<option value="superior_direito" <?php echo ($position === 'superior_direito') ? 'selected' : ''; ?>><?php echo $lang['position_top_right']; ?></option>
-									<option value="superior_esquerdo" <?php echo ($position === 'superior_esquerdo') ? 'selected' : ''; ?>><?php echo $lang['position_top_left']; ?></option>
-								  </select>
-							</div>
-						</div>
-					</div>
-					<div class="text-center">
-						<button type="submit" name="submit" id="kt_sign_in_submit" class="btn bg-gradient-primary mt-3 w-100">
-							<span class="indicator-label"><?php echo $lang['save']; ?></span>
-						</button>
-					</div>
-
-				
+				</div>
 			</div>
 		</div>
-	</div>
+	
+			<div class="container-fluid py-4 centralizar">				
+				<div class="card container-fluid">
+					<div class="card-header pb-0 px-3">
+						<h6 class="mb-0"><?php echo $lang['subtitle'] . "<br/>" . $lang['subtitle_2']; ?></h6>
+					</div>
+					<div class="card-body pt-4 p-3">
+						
+							
+							<div class="row">
+								<!-- Nome de usuário -->				
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="form-control-label" for="url"><?php echo $lang['assistant_name']; ?></label>
+										<input class="form-control" value="<?php echo $url; ?>" placeholder="<?php echo $lang['assistant_name_placeholder']; ?>" type="text" name="url" required="" autocomplete="off" autofocus="">
+									</div>
+								</div>
+								
+								<!-- Personalidade -->	
+								<div class="col-md-8">
+									<div class="form-group">
+										<label class="form-control-label" for="personality"><?php echo $lang['speaking_style']; ?></label></br>
+										<select class="form-control" name="personality" required>
+											<option value="formal, respectful, and professional" <?php echo ($personality === 'formal, respectful, and professional') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_formal']; ?></option>
+											<option value="friendly, establishing an emotional connection" <?php echo ($personality === 'friendly, establishing an emotional connection') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_friendly']; ?></option>
+											<option value="fun, playful, and relaxed" <?php echo ($personality === 'fun, playful, and relaxed') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_fun']; ?></option>
+											<option value="polite, courteous, and refined" <?php echo ($personality === 'polite, courteous, and refined') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_polite']; ?></option>
+											<option value="technical, precise, and objective, providing detailed information" <?php echo ($personality === 'technical, precise, and objective, providing detailed information') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_technical']; ?></option>
+											<option value="empathetic, understanding, showing solidarity and concern" <?php echo ($personality === 'empathetic, understanding, showing solidarity and concern') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_empathetic']; ?></option>
+											<option value="youthful, relaxed, and informal" <?php echo ($personality === 'youthful, relaxed, and informal') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_youthful']; ?></option>
+											<option value="direct, offering brief and precise answers" <?php echo ($personality === 'direct, offering brief and precise answers') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_direct']; ?></option>
+										  </select>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<!-- Informações -->				
+								<div class="col-md-12">
+									<div class="form-group">
+										<label class="form-control-label" for="info"><?php echo $lang['main_informations']; ?></label><label class="form-control-label text-muted"><?php echo $lang['maximum'] . " " . $max_info_characters . " " . $lang['characters']; ?></label></br>
+										<textarea class="form-control form-control-lg" name="info" rows="5" maxlength="<?php echo $max_info_characters; ?>" placeholder="<?php echo $lang['maximum_characters_placeholder']; ?>"><?php echo $info; ?></textarea>
+									</div>
+								</div>
+							</div>
+
+							<input type="hidden" name="visible" value="1">
+							<div class="row"> 
+								<!-- Cor do botão -->
+								<div class="col-md-3">
+									<div class="form-group">
+										<label class="form-control-label" for="cor"><?php echo $lang['button_color']; ?></label>
+										<input class="form-control form-control-solid" value="<?php echo $cor; ?>" type="color" name="cor">
+									</div>
+								</div>
+								<!-- Icon Picker -->
+								<div class="col-md-3">
+									<div class="form-group">
+										<label class="form-control-label" for="cor"><?php echo $lang['choose_icon']; ?></label>
+										<button class="btn btn-secondary" data-placement="left" data-icon="<?php echo $icon; ?>" role="iconpicker"></button>
+									</div>
+								</div>
+								
+								<!-- Posição -->
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="form-control-label" for="position"><?php echo $lang['position']; ?></label></br>
+										<select class="form-control" name="position" required>
+											<option value="inferior_direito" <?php echo ($position === 'inferior_direito') ? 'selected' : ''; ?>><?php echo $lang['position_bottom_right']; ?></option>
+											<option value="inferior_esquerdo" <?php echo ($position === 'inferior_esquerdo') ? 'selected' : ''; ?>><?php echo $lang['position_bottom_left']; ?></option>
+											<option value="superior_direito" <?php echo ($position === 'superior_direito') ? 'selected' : ''; ?>><?php echo $lang['position_top_right']; ?></option>
+											<option value="superior_esquerdo" <?php echo ($position === 'superior_esquerdo') ? 'selected' : ''; ?>><?php echo $lang['position_top_left']; ?></option>
+										  </select>
+									</div>
+								</div>
+							</div>
+							<div class="text-center">
+								<button type="submit" name="submit" id="kt_sign_in_submit" class="btn bg-gradient-primary mt-3 w-100">
+									<span class="indicator-label"><?php echo $lang['save']; ?></span>
+								</button>
+							</div>		
+						<a href="<?php echo admin_url( 'admin.php?page=agenda-virtual-pro-check' ); ?>">Pro Version</a>
+					</div>
+				</div>
+			</div>
+		</form>
 	</div>
 </div>
-</form>
 <!-- jQuery CDN -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <!-- Bootstrap CDN -->

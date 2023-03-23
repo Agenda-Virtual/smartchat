@@ -1,7 +1,7 @@
 === Smartchat ===
 
-Contributors: agendavirtual
-Donate link: https://agendavirutal.net/
+Contributors: Smartchat
+Donate link: https://smartchat.agendavirutal.net/
 Tags: agendamento, compromissos, clientes, empresas, online
 Requires at least: 4.7
 Tested up to: 5.4

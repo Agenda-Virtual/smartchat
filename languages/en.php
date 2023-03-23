@@ -26,6 +26,8 @@ $lang = array(
     'position_top_right' => 'Top right',
     'position_top_left' => 'Top left',
     'save' => 'Save',
-    'password' => 'Password'
+    'password' => 'Password',
+    'key_code' => 'Key code',
+    'key_code_here' => 'Please paste the key code here to unlock the Pro Version.'
 );
 ?>

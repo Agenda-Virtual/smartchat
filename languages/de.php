@@ -26,6 +26,8 @@ $lang = array(
     'position_top_right' => 'Oben rechts',
     'position_top_left' => 'Oben links',
     'save' => 'Speichern',
-    'password' => 'Passwort'
+    'password' => 'Passwort',
+	'key_code' => 'Schlüsselcode',
+    'key_code_here' => 'Bitte geben Sie hier den Schlüsselcode ein, um die Pro-Version freizuschalten.'
 );
 ?>
