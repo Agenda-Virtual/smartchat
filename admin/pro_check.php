@@ -109,7 +109,7 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 			</div>
 		</div>
 	
-		<form method="GET" action="https://smartchat.agendavirtual.net/validation/">
+		<form method="post">
 			<div class="container-fluid py-4 centralizar">				
 				<div class="card container-fluid">
 					<div class="m-3 centralizar">
@@ -142,34 +142,36 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 	</div>
 </div>
 <?php
+if(isset($_POST['submit'])) { // verifique se o formulário foi enviado
+    $key = $_POST['key']; // obter o valor do campo de entrada
+    $url = 'http://smartchat.agendavirtual.net/validation/?key=' . $key; // adicionar o valor à URL
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $resposta = curl_exec($ch);
+    curl_close($ch);
+	
+	$inicio = strpos($resposta, "Value@:") + strlen("Value@:");
+	$fim = strpos($resposta, "end@", $inicio);
+	$dados = substr($resposta, $inicio, $fim - $inicio);
+}
 
-$url = 'http://smartchat.agendavirtual.net/validation/?key=Y3VzX05ZQlVNRDBBTzDFGDFGHc0LzEyOTY=';
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-$resposta = curl_exec($ch);
-curl_close($ch);
-
-$inicio = strpos($resposta, "Os valores são iguais. ID: ") + strlen("Os valores são iguais. ID: ");
-$fim = strpos($resposta, "/1296", $inicio);
-$dados = substr($resposta, $inicio, $fim - $inicio);
-
-//echo "A resposta da página de destino é: $dados";
-
-$results = $wpdb->get_results( "SELECT * FROM $table_name WHERE Features = 'key'" );
-if ( count( $results ) > 0 ) {
-    // Atualiza o valor da coluna "Data"
-    $wpdb->update( $table_name, array(
-        'Data' => $dados,
-    ), array(
-        'Features' => 'key',
-    ) );
-} else {
-    // Adiciona a linha "key" na coluna "Features" e insere o valor "123" na coluna "Data"
-    $wpdb->insert( $table_name, array(
-        'Features' => 'key',
-        'Data' => $dados,
-    ) );
+if(isset($dados) && !empty($dados)) {
+	$results = $wpdb->get_results( "SELECT * FROM $table_name WHERE Features = 'key'" );
+	if ( count( $results ) > 0 ) {
+		// Atualiza o valor da coluna "Data"
+		$wpdb->update( $table_name, array(
+			'Data' => $dados,
+		), array(
+			'Features' => 'key',
+		) );
+	} else {
+		// Adiciona a linha "key" na coluna "Features" e insere o valor "123" na coluna "Data"
+		$wpdb->insert( $table_name, array(
+			'Features' => 'key',
+			'Data' => $dados,
+		) );
+	}
 }
 
 ?>

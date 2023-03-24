@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
   $acronym = $language_parts[0];
   $info = sanitize_text_field($_POST['info']);
   $time = isset($_POST['time']) && $_POST['time'] == '1' ? '1' : '0';
-  $show_logo = isset($_POST['show_logo']) && $_POST['show_logo'] == '1' ? '1' : '0';
+  $hide_logo = isset($_POST['hide_logo']) && $_POST['hide_logo'] == '1' ? '1' : '0';
 
   $nome_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'Cor'");
   if (count($nome_result) > 0) {
@@ -79,11 +79,11 @@ if (isset($_POST['submit'])) {
     $wpdb->insert($table_name, array('Features' => 'time', 'Data' => $time));
   } 
   
-  $show_logo_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'show_logo'");
-  if (count($show_logo_result) > 0) {
-    $wpdb->update($table_name, array('Data' => $show_logo), array('Features' => 'show_logo'));
+  $hide_logo_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'hide_logo'");
+  if (count($hide_logo_result) > 0) {
+    $wpdb->update($table_name, array('Data' => $hide_logo), array('Features' => 'hide_logo'));
   } else {
-    $wpdb->insert($table_name, array('Features' => 'show_logo', 'Data' => $show_logo));
+    $wpdb->insert($table_name, array('Features' => 'hide_logo', 'Data' => $hide_logo));
   }
 
   $position_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'position'");
@@ -115,6 +115,13 @@ if (isset($_POST['submit'])) {
 $max_info_characters = "1000";
 
 // código para buscar os valores armazenados na tabela e preencher os campos correspondentes, caso existam
+
+$key = '';
+$key_ver = $wpdb->get_var( "SELECT Data FROM $table_name WHERE Features = 'key'" );
+if ( !empty( $key_ver ) ) {
+    $key = 1;
+}
+
 $nome_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'Cor'");
 $cor = '';
 if (count($nome_result) > 0) {
@@ -151,10 +158,10 @@ if (count($time_result) > 0) {
   $time = $time_result[0]->Data;
 }
 
-$show_logo_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'show_logo'");
-$show_logo = '';
-if (count($show_logo_result) > 0) {
-  $show_logo = $show_logo_result[0]->Data;
+$hide_logo_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'hide_logo'");
+$hide_logo = '';
+if (count($hide_logo_result) > 0) {
+  $hide_logo = $hide_logo_result[0]->Data;
 }
 
 $position_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'position'");
@@ -333,7 +340,7 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 								<!-- Tempo de resposta -->				
 								<div class="col-md-6">
 									<div class="form-group">
-										<input type="checkbox" id="time" name="time" value="1" <?php echo $time == '1' ? 'checked' : ''; ?>>
+										<input type="checkbox" id="time" name="time" value="1" <?php echo $time == '1' ? 'checked' : ''; ?> <?php echo $key != 1 ? 'disabled' : ''; ?>>
 										<label class="form-control-label" for="time"><?php echo $lang['simulate_real_conversation']; ?></label></br>
 									</div>
 								</div>
@@ -341,8 +348,8 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 								<!-- Logo -->	
 								<div class="col-md-6">
 									<div class="form-group">
-										<input type="checkbox" id="show_logo" name="show_logo" value="1" <?php echo $show_logo == '1' ? 'checked' : ''; ?>>
-										<label class="form-control-label" for="show_logo"><?php echo $lang['show_logo']; ?></label></br>
+										<input type="checkbox" id="hide_logo" name="hide_logo" value="1" <?php echo $hide_logo == '1' ? 'checked' : ''; ?> <?php echo $key != 1 ? 'disabled' : ''; ?>>
+										<label class="form-control-label" for="hide_logo"><?php echo $lang['hide_logo']; ?></label></br>
 									</div>
 								</div>
 							</div>

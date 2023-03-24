@@ -29,6 +29,18 @@ $language = 'portuguese'; // definindo "portuguese" como padrão
 if (count($language_result) > 0) {
   $language = $language_result[0]->Data;
 }
+
+$hide_logo_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'hide_logo'");
+$hide_logo = '';
+if (count($hide_logo_result) > 0) {
+  $hide_logo = $hide_logo_result[0]->Data;
+}
+
+$key = '';
+$key_ver = $wpdb->get_var( "SELECT Data FROM $table_name WHERE Features = 'key'" );
+if ( !empty( $key_ver ) ) {
+    $key = 1;
+}
 ?>
 
 <script>
@@ -101,9 +113,15 @@ $(document).ready(function() {
 				<button class="input-group-text" id="submit"><i class="button-message fas fa-location-arrow"></i></button>
 			</div>
 		</div>
-		<div class="logo_box_chat">
-			<img src="<?php echo plugin_dir_url( __FILE__ ) . 'img/logo_smartchat.png' ?>" alt="Logo Smartchat" width="70px">
-		</div>
+		<?php 
+		if ( empty( $key ) ) {
+			$hide_logo = 0;
+		}
+		if($hide_logo == 0){ ?>
+			<div class="logo_box_chat">
+				<img src="<?php echo plugin_dir_url( __FILE__ ) . 'img/logo_smartchat.png' ?>" alt="Logo Smartchat" width="70px">
+			</div>
+		<?php }; ?>
 	</div>
 </div>
 

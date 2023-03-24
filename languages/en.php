@@ -31,6 +31,6 @@ $lang = array(
     'key_code_here' => 'Please paste the key code here to unlock the Pro Version.',
 	'simulate_real_conversation' => 'Simulate a conversation with an attendant',
 	'simulate_real_conversation_help' => 'Simulating a conversation with an attendant delays the response based on the size of the text, and also displays "Typing..." while the user awaits the response.',
-	'show_logo' => 'Show Smartchat logo'
+	'hide_logo' => 'Hide Smartchat logo'
 );
 ?>

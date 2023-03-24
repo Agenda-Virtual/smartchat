@@ -31,7 +31,7 @@ $lang = array(
     'key_code_here' => 'Por favor, pegue el código clave aquí para desbloquear la versión Pro.',
 	'simulate_real_conversation' => 'Simular una conversación con un agente',
 	'simulate_real_conversation_help' => 'La simulación de una conversación con un agente retrasa el envío de la respuesta según el tamaño del texto, y también muestra "Escribiendo..." mientras el usuario espera la respuesta.',
-	'show_logo' => 'Mostrar logo de Smartchat'
+	'hide_logo' => 'Ocultar logotipo de Smartchat'
 );
 ?>
 
