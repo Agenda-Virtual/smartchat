@@ -36,10 +36,21 @@ if (count($hide_logo_result) > 0) {
   $hide_logo = $hide_logo_result[0]->Data;
 }
 
+$time_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'time'");
+$time = '';
+if (count($time_result) > 0) {
+  $time = $time_result[0]->Data;
+}
+
 $key = '';
 $key_ver = $wpdb->get_var( "SELECT Data FROM $table_name WHERE Features = 'key'" );
 if ( !empty( $key_ver ) ) {
     $key = 1;
+}
+
+if ( empty( $key ) ) {
+	$hide_logo = 0;
+	$time = 0;
 }
 ?>
 
@@ -47,7 +58,6 @@ if ( !empty( $key_ver ) ) {
 var url = "https://wsgi.agendavirtual.net/bot";
 //var url = "https://01cb-52-207-162-32.ngrok.io/bot";
 var historico = "";
-var timeWait = "0";
 
 $(document).ready(function() {
 
@@ -75,7 +85,22 @@ $(document).ready(function() {
 			message = "Previous message: " + historico + '. ' + personalidade + '. ' + language + ', ' + frase + ', ' + nome + '. Answer only the question ahead:' + message + ".";
 			historico = "";
 		}
-			$.post(url, {Body: message}, function(data) {
+			if(<?php echo $time; ?> == 1){
+				$("#chat-log").append("<p class='typing'><span>Digitando...</span></p>");
+				$('#virtual-assistant-box').scrollTop($('#virtual-assistant-box')[0].scrollHeight);
+				var typingMessage = $(".typing span");
+				setTimeout(function() {
+				  typingMessage.parent().addClass("show");
+				}, 2000);
+				var interval = setInterval(function() {
+				  typingMessage.fadeIn(1000, function() {
+					typingMessage.fadeOut(1000);
+				  });
+				}, 1000);
+			}
+			
+			// Envia mensagem para o servidor
+			$.post(url, {Body: message}, function(data) {		  
 				data = data.replace(/(^\s*<\?xml[^>]*>\s*<Response>\s*<Message>\s*)/g, ''); // removes XML header and opening tags
 				data = data.replace(/<\/Message>\s*<\/Response>/g, ''); // removes closing tags
 				data = data.replace(/(https?:\/\/[^\s]+)|(www.[^\s]+)/g, function(match) {
@@ -85,13 +110,20 @@ $(document).ready(function() {
 						return '<a href="http://' + match + '" target="_blank">' + match + '</a>';
 					}
 				});
+			var delay = data.length;
+			if(<?php echo $time; ?> == 1){
+				var delay = data.length * 30;
+			}
+			setTimeout(function() {
+				$(".typing").remove();
 				$("#chat-log").append("<li class='clearfix'><p class='message other-message float-right' style='display:none'><b><?php echo $URL; ?>:</b> " + data + "</p></li>");
 				$(".message:last").fadeIn(150)
 				historico = data;
 				$('#virtual-assistant-box').scrollTop($('#virtual-assistant-box')[0].scrollHeight);
-			});
-        $("#message").val("");
-    });
+			}, delay);
+		});
+		$("#message").val("");
+	});
 });
 </script>
 
@@ -114,9 +146,6 @@ $(document).ready(function() {
 			</div>
 		</div>
 		<?php 
-		if ( empty( $key ) ) {
-			$hide_logo = 0;
-		}
 		if($hide_logo == 0){ ?>
 			<div class="logo_box_chat">
 				<img src="<?php echo plugin_dir_url( __FILE__ ) . 'img/logo_smartchat.png' ?>" alt="Logo Smartchat" width="70px">
