@@ -1,41 +1,41 @@
-if (agendaVirtualVisible.visible == 1) {
+if (smartChatVisible.visible == 1) {
   var botao_av = document.createElement('a');
-  botao_av.id = 'botao-agendavirtual';
-  botao_av.classList.add('botao-agendavirtual');
+  botao_av.id = 'botao-smartchat';
+  botao_av.classList.add('botao-smartchat');
 
-  var icon = agendaVirtualDataIcon.icon;
+  var icon = smartChatDataIcon.icon;
   botao_av.innerHTML = '<i class="icon '+icon+'"></i>';
 
-  var cor = agendaVirtualDataCor.cor;
+  var cor = smartChatDataCor.cor;
   botao_av.style.backgroundColor = cor;
 
   var boxchat_av = document.querySelector('#virtual-assistant-box');
   var chat_message = document.querySelector('.chat-message');
 
-  var position = agendaVirtualDataPosition.position;
+  var position = smartChatDataPosition.position;
   switch (position) {
     case 'inferior_direito':
-      botao_av.classList.add('botao-agendavirtual-inferior-direito');
+      botao_av.classList.add('botao-smartchat-inferior-direito');
       boxchat_av.classList.add('box-chat-inferior-direito');
       chat_message.classList.add('bottom-chat');
       break;
     case 'inferior_esquerdo':
-      botao_av.classList.add('botao-agendavirtual-inferior-esquerdo');
+      botao_av.classList.add('botao-smartchat-inferior-esquerdo');
       boxchat_av.classList.add('box-chat-inferior-esquerdo');
 	  chat_message.classList.add('bottom-chat');
       break;
     case 'superior_direito':
-      botao_av.classList.add('botao-agendavirtual-superior-direito');
+      botao_av.classList.add('botao-smartchat-superior-direito');
       boxchat_av.classList.add('box-chat-superior-direito');
 	  chat_message.classList.add('top-chat');
       break;
     case 'superior_esquerdo':
-      botao_av.classList.add('botao-agendavirtual-superior-esquerdo');
+      botao_av.classList.add('botao-smartchat-superior-esquerdo');
       boxchat_av.classList.add('box-chat-superior-esquerdo');
 	  chat_message.classList.add('top-chat');
       break;
     default:
-      botao_av.classList.add('botao-agendavirtual-inferior-direito');
+      botao_av.classList.add('botao-smartchat-inferior-direito');
       boxchat_av.classList.add('box-chat-inferior-direito');
 	  chat_message.classList.add('bottom-chat');
   }
@@ -44,7 +44,7 @@ if (agendaVirtualVisible.visible == 1) {
 }
 
 jQuery(document).ready(function($) {
-    $('.botao-agendavirtual').click(function() {
+    $('.botao-smartchat').click(function() {
         if ($('.virtual-assistant-box').is(':visible')) {
             $('.virtual-assistant-box').fadeOut(100);
         } else {

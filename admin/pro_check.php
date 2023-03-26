@@ -87,7 +87,7 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 				<div class="row gx-4">
 					<div class="col-auto">
 						<div href="https://agendavirtual.net/app" class="m-5 text-center ">
-							<img src="<?php echo plugin_dir_url( __FILE__ ) . 'img/Logo_Agenda_Virtual.png'; ?>" alt="Logo Agenda Virtual" width="200px" height="auto">
+							<img src="<?php echo plugin_dir_url( __FILE__ ) . 'img/logo_smartchat.png'; ?>" alt="Logo Agenda Virtual" width="200px" height="auto">
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
@@ -134,7 +134,7 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 									<span class="indicator-label"><?php echo $lang['save']; ?></span>
 								</button>
 							</div>		
-						<a href="<?php echo admin_url( 'admin.php?page=agenda-virtual-admin' ); ?>">Voltar</a>
+						<a href="<?php echo admin_url( 'admin.php?page=smartchat-admin' ); ?>">Voltar</a>
 					</div>
 				</div>
 			</div>

@@ -243,7 +243,7 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 				<div class="row gx-4">
 					<div class="col-auto">
 						<div href="https://agendavirtual.net/app" class="m-5 text-center ">
-							<img src="<?php echo plugin_dir_url( __FILE__ ) . 'img/Logo_Agenda_Virtual.png'; ?>" alt="Logo Agenda Virtual" width="200px" height="auto">
+							<img src="<?php echo plugin_dir_url( __FILE__ ) . 'img/logo_smartchat.png'; ?>" alt="Logo Agenda Virtual" width="200px" height="auto">
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
@@ -254,7 +254,7 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 								<div class="form-group">
 									<select id="language" name="language">
 									<?php foreach ($languages as $code => $language): ?>
-									  <option value="<?php echo $code; ?>"<?php if ($code === $acronym_sql . "_" . $language_sql) { echo ' selected'; } ?>><?php echo $language; ?></option>
+									  <option value="<?php echo esc_attr($code); ?>"<?php if ($code === $acronym_sql . "_" . $language_sql) { echo ' selected'; } ?>><?php echo esc_attr($language); ?></option>
 									<?php endforeach; ?>
 									</select>
 								</div>
@@ -276,7 +276,7 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 								<div class="col-md-4">
 									<div class="form-group">
 										<label class="form-control-label" for="url"><?php echo $lang['assistant_name']; ?></label>
-										<input class="form-control" value="<?php echo $url; ?>" placeholder="<?php echo $lang['assistant_name_placeholder']; ?>" type="text" name="url" required="" autocomplete="off" autofocus="">
+										<input class="form-control" value="<?php echo esc_attr($url); ?>" placeholder="<?php echo $lang['assistant_name_placeholder']; ?>" type="text" name="url" required="" autocomplete="off" autofocus="">
 									</div>
 								</div>
 								
@@ -313,14 +313,14 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 								<div class="col-md-3">
 									<div class="form-group">
 										<label class="form-control-label" for="cor"><?php echo $lang['button_color']; ?></label>
-										<input class="form-control form-control-solid" value="<?php echo $cor; ?>" type="color" name="cor">
+										<input class="form-control form-control-solid" value="<?php echo esc_attr($cor); ?>" type="color" name="cor">
 									</div>
 								</div>
 								<!-- Icon Picker -->
 								<div class="col-md-3">
 									<div class="form-group">
-										<label class="form-control-label" for="cor"><?php echo $lang['choose_icon']; ?></label>
-										<button class="btn btn-secondary" data-placement="left" data-icon="<?php echo $icon; ?>" role="iconpicker"></button>
+										<label class="form-control-label" for="cor"><?php echo $lang['choose_icon']; ?></label><br/>
+										<button class="btn btn-secondary" data-placement="left" data-icon="<?php echo esc_attr($icon); ?>" role="iconpicker"></button>
 									</div>
 								</div>
 								<!-- Posição -->
@@ -358,7 +358,7 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 									<span class="indicator-label"><?php echo $lang['save']; ?></span>
 								</button>
 							</div>		
-						<a href="<?php echo admin_url( 'admin.php?page=agenda-virtual-pro-check' ); ?>">Pro Version</a>
+						<a href="<?php echo admin_url( 'admin.php?page=smartchat-pro-check' ); ?>">Pro Version</a>
 					</div>
 				</div>
 			</div>

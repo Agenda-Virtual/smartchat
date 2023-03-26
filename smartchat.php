@@ -3,7 +3,7 @@
 Plugin Name: Smartchat
 Plugin URI: https://smartchat.agendavirtual.net/plugin
 Description: Transforme a interação com seus clientes com nosso incrível plugin de assistente virtual, que utiliza a inteligência artificial do ChatGPT para fornecer respostas precisas e eficientes em tempo real. Insira facilmente informações importantes para que a assistente virtual possa personalizar as respostas de acordo com as necessidades dos usuários e aprimorar a experiência do cliente.
-Version: 2.1.0
+Version: 2.1.1
 Author: Smartchat
 Author URI: https://smartchat.agendavirtual.net
 License: GPL2
@@ -34,7 +34,7 @@ function smartchat_update_checker_setting() {
 add_action( 'admin_init', 'smartchat_update_checker_setting' );
 
 // Carrega o script JavaScript
-function plugin_agenda_virtual() {
+function plugin_smartchat() {
     global $wpdb;
     $table_name = $wpdb->prefix . 'virtual_assistant';
     $url = $wpdb->get_var("SELECT Data FROM $table_name WHERE Features = 'URL'");
@@ -45,63 +45,63 @@ function plugin_agenda_virtual() {
     
     wp_enqueue_script( 'jquery-script', 'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js' );
     wp_enqueue_script( 'bootstrap-script', 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js', array( 'jquery-script' ) );
-    wp_enqueue_script( 'agenda-virtual-script', plugin_dir_url( __FILE__ ) . 'public/js/agenda-virtual-script.js', array( 'bootstrap-script' ), '2', true );
-    wp_enqueue_style( 'agenda-virtual-style', plugin_dir_url( __FILE__ ) . 'public/css/agenda-virtual.css', array(), '1.4' );
-	wp_enqueue_style( 'agenda-virtual-script', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css');
+    wp_enqueue_script( 'smartchat-script', plugin_dir_url( __FILE__ ) . 'public/js/smartchat-script.js', array( 'bootstrap-script' ), '2', true );
+    wp_enqueue_style( 'smartchat-style', plugin_dir_url( __FILE__ ) . 'public/css/smartchat.css', array(), '1.4' );
+	wp_enqueue_style( 'smartchat-script', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css');
 
     $data = array('url' => $url);
-    wp_localize_script('agenda-virtual-script', 'agendaVirtualData', $data);
+    wp_localize_script('smartchat-script', 'smartChatData', $data);
     $dataview = array('visible' => $visible);
-    wp_localize_script('agenda-virtual-script', 'agendaVirtualVisible', $dataview);
+    wp_localize_script('smartchat-script', 'smartChatVisible', $dataview);
     $dataposition = array('position' => $position_button);
-    wp_localize_script('agenda-virtual-script', 'agendaVirtualDataPosition', $dataposition);
+    wp_localize_script('smartchat-script', 'smartChatDataPosition', $dataposition);
     $dataicon = array('icon' => $icon);
-    wp_localize_script('agenda-virtual-script', 'agendaVirtualDataIcon', $dataicon);
+    wp_localize_script('smartchat-script', 'smartChatDataIcon', $dataicon);
     $datacor = array('cor' => $cor);
-    wp_localize_script('agenda-virtual-script', 'agendaVirtualDataCor', $datacor);
+    wp_localize_script('smartchat-script', 'smartChatDataCor', $datacor);
 }
-add_action( 'wp_enqueue_scripts', 'plugin_agenda_virtual' );
+add_action( 'wp_enqueue_scripts', 'plugin_smartchat' );
 
 //Area adminsitrativa do Plugin
-function agenda_virtual_admin_menu() {
-	wp_enqueue_style( 'agenda-virtual-style', plugin_dir_url( __FILE__ ) . 'admin/css/admin-av.css' );
-	wp_enqueue_script( 'agenda-virtual-script', plugin_dir_url( __FILE__ ) . 'admin/js/av_admin.js', array(), '1.3', true );
-	wp_enqueue_style( 'agenda-virtual-script', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css');
+function smart_chat_admin_menu() {
+	wp_enqueue_style( 'smartchat-style', plugin_dir_url( __FILE__ ) . 'admin/css/admin-av.css' );
+	wp_enqueue_script( 'smartchat-script', plugin_dir_url( __FILE__ ) . 'admin/js/av_admin.js', array(), '1.3', true );
+	wp_enqueue_style( 'smartchat-script', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css');
 
 	add_menu_page(
 		'Smartchat',
 		'Smartchat',
 		'manage_options',
-		'agenda-virtual-admin',
-		'agenda_virtual_admin_page'
+		'smartchat-admin',
+		'smart_chat_admin_page'
 	);
 
 	// Adicionando nova página
 	add_submenu_page(
-		'agenda-virtual-admin',
+		'smartchat-admin',
 		'Pro Check',
 		'Pro Check',
 		'manage_options',
-		'agenda-virtual-pro-check',
-		'agenda_virtual_pro_check_page'
+		'smartchat-pro-check',
+		'smart_chat_pro_check_page'
 	);
 }
-add_action( 'admin_menu', 'agenda_virtual_admin_menu' );
+add_action( 'admin_menu', 'smart_chat_admin_menu' );
 
-function agenda_virtual_admin_page() {
+function smart_chat_admin_page() {
 	include( plugin_dir_path( __FILE__ ) . 'admin/admin.php' );
 }
 
-// Função para a página "agenda-virtual-pro-check"
-function agenda_virtual_pro_check_page() {
+// Função para a página "smartchat-pro-check"
+function smart_chat_pro_check_page() {
 	include_once( plugin_dir_path( __FILE__ ) . 'admin/pro_check.php' );
 }
 
 add_action('wp_ajax_update_visible', 'update_visible');
 add_action('wp_ajax_nopriv_update_visible', 'update_visible');
 
-function agenda_virtual_html() {
-    echo '<div class="botao-agendavirtual"></div>';
+function smart_chat_html() {
+    echo '<div class="botao-smartchat"></div>';
     echo '<div id="virtual-assistant-box" class="virtual-assistant-box">';
     include(plugin_dir_path(__FILE__) . 'public/chat.php');
     echo '</div>';
@@ -124,6 +124,6 @@ function agenda_virtual_html() {
     echo '</script>';
 }
 
-add_action( 'wp_footer', 'agenda_virtual_html' );
+add_action( 'wp_footer', 'smart_chat_html' );
 
 ?>
