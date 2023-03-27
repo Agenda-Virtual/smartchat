@@ -3,35 +3,11 @@
 Plugin Name: Smartchat
 Plugin URI: https://smartchat.agendavirtual.net/plugin
 Description: Transforme a interação com seus clientes com nosso incrível plugin de assistente virtual, que utiliza a inteligência artificial do ChatGPT para fornecer respostas precisas e eficientes em tempo real. Insira facilmente informações importantes para que a assistente virtual possa personalizar as respostas de acordo com as necessidades dos usuários e aprimorar a experiência do cliente.
-Version: 2.1.1
+Version: 2.1.2
 Author: Smartchat
 Author URI: https://smartchat.agendavirtual.net
 License: GPL2
 */
-
-require_once 'plugin-update-checker/plugin-update-checker.php';
-
-/*
- * Plugin Update Checker Setting
- *
- * @see https://github.com/YahnisElsts/plugin-update-checker for more details.
- */
-function smartchat_update_checker_setting() {
-	if ( ! is_admin() || ! class_exists( 'Puc_v4_Factory' ) ) {
-		return;
-	}
-
-	$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-		'https://github.com/Agenda-Virtual/smartchat/',
-		__FILE__,
-		'smartchat'
-	);
-
-	// (Opcional) Set the branch that contains the stable release.
-	$myUpdateChecker->setBranch('20-03-23_2');
-}
-
-add_action( 'admin_init', 'smartchat_update_checker_setting' );
 
 // Carrega o script JavaScript
 function plugin_smartchat() {
@@ -64,8 +40,10 @@ add_action( 'wp_enqueue_scripts', 'plugin_smartchat' );
 
 //Area adminsitrativa do Plugin
 function smart_chat_admin_menu() {
-	wp_enqueue_style( 'smartchat-style', plugin_dir_url( __FILE__ ) . 'admin/css/admin-av.css' );
-	wp_enqueue_script( 'smartchat-script', plugin_dir_url( __FILE__ ) . 'admin/js/av_admin.js', array(), '1.3', true );
+		wp_enqueue_script( 'jquery-script', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js', array(), '1.0', true );
+
+	wp_enqueue_style( 'smartchat-style', plugin_dir_url( __FILE__ ) . 'admin/css/admin-av.css', array(), '1.5', false );
+	wp_enqueue_script( 'smartchat-script', plugin_dir_url( __FILE__ ) . 'admin/js/av_admin.js', array(), '1.4', true );
 	wp_enqueue_style( 'smartchat-script', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css');
 
 	add_menu_page(

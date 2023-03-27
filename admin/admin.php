@@ -3,11 +3,6 @@
 <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 
-<!-- Bootstrap-CDN -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
-<!-- Bootstrap-Iconpicker -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-iconpicker/1.10.0/css/bootstrap-iconpicker.min.css" integrity="sha512-0SX0Pen2FCs00cKFFb4q3GLyh3RNiuuLjKJJD56/Lr1WcsEV8sOtMSUftHsR6yC9xHRV7aS0l8ds7GVg6Xod0A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 <?php
 global $wpdb;
 $charset_collate = $wpdb->get_charset_collate();
@@ -229,10 +224,15 @@ if (count($language_result) > 0) {
 }
 
 // Load language file
-include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php' );
+include_once ( plugin_dir_path( __FILE__ ) . 'languages/' . $acronym . '.php' );
+
+if ( empty( $key ) ) {
+	$hide_logo = 0;
+	$time = 0;
+}
 ?>
 <div class="g-sidenav-show bg-gray-100 margin-body">
-	<div class="container-fluid py-4">				
+	<div class="container-fluid py-4 centralizar">				
 		<form method="post">
 		
 		<div class="container-fluid width-admin">
@@ -267,9 +267,8 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 	
 			<div class="container-fluid py-4 centralizar">				
 				<div class="card container-fluid">
-					<div class="m-3">
-						<h6 class="mb-0"><?php echo $lang['subtitle'] . "<br/>" . $lang['subtitle_2']; ?></h6>
-					</div>
+					<h5 class="opacity-9 centralizar"><?php echo $lang['title']; ?></h5>
+					<hr class="horizontal dark mt-1 mb-3">
 					<div class="card-body pt-4 p-3">
 							<div class="row">
 								<!-- Nome de usuário -->				
@@ -336,20 +335,28 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 									</div>
 								</div>
 							</div>
-							<div class="row">
-								<!-- Tempo de resposta -->				
-								<div class="col-md-6">
-									<div class="form-group">
-										<input type="checkbox" id="time" name="time" value="1" <?php echo $time == '1' ? 'checked' : ''; ?> <?php echo $key != 1 ? 'disabled' : ''; ?>>
-										<label class="form-control-label" for="time"><?php echo $lang['simulate_real_conversation']; ?></label></br>
+							<div class="bg-gradient-secondary shadow border-radius-md pt-4 p-3">
+								<div class="row">
+									<h5 class="text-white opacity-9 centralizar"><?php echo $lang['pro_resources']; ?></h5>
+									<hr class="horizontal light mt-1 mb-3">
+									<!-- Tempo de resposta -->				
+									<div class="col-md-6">
+										<div class="form-group">
+											<div class="form-check form-switch ms-auto">
+												<input class="form-check-input" type="checkbox" id="time" name="time" value="1" <?php echo $time == '1' ? 'checked' : ''; ?> <?php echo $key != 1 ? 'disabled' : ''; ?>>
+												<label class="form-control-label text-white" for="time"><?php echo $lang['simulate_real_conversation']; ?><i class="fas fa-question-circle ms-1" title="<?php echo $lang['simulate_real_conversation_help']; ?>"></i></label></br>											
+											</div>
+										</div>
 									</div>
-								</div>
-								
-								<!-- Logo -->	
-								<div class="col-md-6">
-									<div class="form-group">
-										<input type="checkbox" id="hide_logo" name="hide_logo" value="1" <?php echo $hide_logo == '1' ? 'checked' : ''; ?> <?php echo $key != 1 ? 'disabled' : ''; ?>>
-										<label class="form-control-label" for="hide_logo"><?php echo $lang['hide_logo']; ?></label></br>
+									
+									<!-- Logo -->	
+									<div class="col-md-6">
+										<div class="form-group">
+											<div class="form-check form-switch ms-auto">
+												<input class="form-check-input" type="checkbox" id="hide_logo" name="hide_logo" value="1" <?php echo $hide_logo == '1' ? 'checked' : ''; ?> <?php echo $key != 1 ? 'disabled' : ''; ?>>
+												<label class="form-control-label text-white" for="hide_logo"><?php echo $lang['hide_logo']; ?></label></br>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -358,12 +365,10 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 									<span class="indicator-label"><?php echo $lang['save']; ?></span>
 								</button>
 							</div>		
-						<a href="<?php echo admin_url( 'admin.php?page=smartchat-pro-check' ); ?>">Pro Version</a>
+						<a href="<?php echo admin_url( 'admin.php?page=smartchat-pro-check' ); ?>"><?php echo $key != 1 ? $lang['pro_version'] : $lang['pro_version_active']; ?></a>
 					</div>
 				</div>
 			</div>
 		</form>
 	</div>
 </div>
-<!-- Bootstrap CDN -->
-<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js?v=2"></script>

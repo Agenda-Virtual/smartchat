@@ -3,11 +3,6 @@
 <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 
-<!-- Bootstrap-CDN -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
-<!-- Bootstrap-Iconpicker -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-iconpicker/1.10.0/css/bootstrap-iconpicker.min.css" integrity="sha512-0SX0Pen2FCs00cKFFb4q3GLyh3RNiuuLjKJJD56/Lr1WcsEV8sOtMSUftHsR6yC9xHRV7aS0l8ds7GVg6Xod0A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 <?php
 global $wpdb;
 $charset_collate = $wpdb->get_charset_collate();
@@ -73,57 +68,59 @@ if (count($language_result) > 0) {
 }
 
 // Load language file
-include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php' );
+include_once ( plugin_dir_path( __FILE__ ) . 'languages/' . $acronym . '.php' );
+
+$key = '';
+$key_ver = $wpdb->get_var( "SELECT Data FROM $table_name WHERE Features = 'key'" );
+if ( !empty( $key_ver ) ) {
+    $key = 1;
+}
 ?>
 
 <div class="g-sidenav-show bg-gray-100 margin-body">
-	<div class="container-fluid py-4">				
+	<div class="container-fluid py-4 centralizar">				
+	<form method="post">
 		
 		<div class="container-fluid width-admin">
-			<div class="page-header min-height-150 border-radius-xl mt-4" style="background-image: url('<?php echo plugin_dir_url( __FILE__ ) . 'img/curved0.jpg'; ?>'); background-position-y: 50%;">
+			<div class="page-header min-width-800 min-height-150 border-radius-xl mt-4" style="background-image: url('<?php echo plugin_dir_url( __FILE__ ) . 'img/curved0.jpg'; ?>'); background-position-y: 50%;">
 				<span class="mask bg-gradient-primary opacity-6"></span>
 			</div>
-			<div class="card card-body blur shadow-blur mx-4 mt-n6">
+			<div class="card card-body blur shadow-blur mx-4 mt-n6 centralizar">
 				<div class="row gx-4">
 					<div class="col-auto">
 						<div href="https://agendavirtual.net/app" class="m-5 text-center ">
 							<img src="<?php echo plugin_dir_url( __FILE__ ) . 'img/logo_smartchat.png'; ?>" alt="Logo Agenda Virtual" width="200px" height="auto">
 						</div>
 					</div>
-					<div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
-						<div class="nav-wrapper position-relative end-0 text-center">
-							<label class="form-control-label" for="language"><?php echo strtoupper($lang['language']); ?></label></br>
-							<!-- idioma -->				
-							<div class="col-md-12">
-								<div class="form-group">
-									<select id="language" name="language">
-									<?php foreach ($languages as $code => $language): ?>
-									  <option value="<?php echo $code; ?>"<?php if ($code === $acronym_sql . "_" . $language_sql) { echo ' selected'; } ?>><?php echo $language; ?></option>
-									<?php endforeach; ?>
-									</select>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
 	
-		<form method="post">
 			<div class="container-fluid py-4 centralizar">				
-				<div class="card container-fluid">
-					<div class="m-3 centralizar">
-						<h6 class="mb-0"><?php echo $lang['key_code']; ?></h6>
-					</div>
+				<div class="card container-fluid min-width-800">
 					<div class="card-body pt-4 p-3">
-						
-							
 							<div class="row">
 								<!-- Nome de usuário -->				
 								<div class="col-md-12">
 									<div class="form-group">
+									<?php
+									if ( !empty( $key ) ) {
+										?>
+										<div class="m-3 centralizar d-flex  p-2 centralizar">
+											<div class="icon icon-shape rounded-circle bg-gradient-success shadow text-center">
+												<i class="fas fa-check opacity-10" aria-hidden="true"></i>
+											</div>
+											<div>
+												<h4 class="ps-3 pt-1 opacity-8"><?php echo $lang['pro_version_active']; ?></h4>
+											</div>
+										</div>
+									<?php }else{?>
+										<div class="m-3 centralizar">
+											<h6 class="mb-0"><?php echo $lang['key_code']; ?></h6>
+										</div>
+									<?php }?>
 										<label class="form-control-label" for="url"><?php echo $lang['key_code']; ?></label>
-										<input class="form-control" value="" placeholder="<?php echo $lang['key_code_here']; ?>" type="text" name="key" id="key" required autocomplete="off" autofocus="">
+										<input class="form-control" value="<?php echo esc_attr($key_ver); ?>" placeholder="<?php echo $lang['key_code_here']; ?>" type="text" name="key" id="key" required autocomplete="off" autofocus="">
 									</div>
 								</div>
 							</div>
@@ -134,7 +131,7 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 									<span class="indicator-label"><?php echo $lang['save']; ?></span>
 								</button>
 							</div>		
-						<a href="<?php echo admin_url( 'admin.php?page=smartchat-admin' ); ?>">Voltar</a>
+						<a href="<?php echo admin_url( 'admin.php?page=smartchat-admin' ); ?>"><?php echo $lang['return']; ?></a>
 					</div>
 				</div>
 			</div>
@@ -143,8 +140,8 @@ include_once ( plugin_dir_path( __FILE__ ) . '../languages/' . $acronym . '.php'
 </div>
 <?php
 if(isset($_POST['submit'])) { // verifique se o formulário foi enviado
-    $key = $_POST['key']; // obter o valor do campo de entrada
-    $url = 'http://smartchat.agendavirtual.net/validation/?key=' . $key; // adicionar o valor à URL
+    $keycode = $_POST['key']; // obter o valor do campo de entrada
+    $url = 'http://smartchat.agendavirtual.net/validation/?key=' . $keycode;
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -175,7 +172,3 @@ if(isset($dados) && !empty($dados)) {
 }
 
 ?>
-<!-- jQuery CDN -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<!-- Bootstrap CDN -->
-<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>

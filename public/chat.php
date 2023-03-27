@@ -4,6 +4,14 @@ global $wpdb;
 $charset_collate = $wpdb->get_charset_collate();
 $table_name = $wpdb->prefix . 'virtual_assistant';
 
+$acronym_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'acronym'");
+$default_language = 'pt';
+$acronym_sql = $acronym_result[0]->Data;
+$acronym = $acronym_sql;
+
+// Load language file
+include_once ( plugin_dir_path( __FILE__ ) . 'languages/' . $acronym . '.php' );
+
 $info_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'info'");
 $info = '';
 if (!empty($info_result) && !empty($info_result[0]->Data)) {
@@ -56,7 +64,6 @@ if ( empty( $key ) ) {
 
 <script>
 var url = "https://wsgi.agendavirtual.net/bot";
-//var url = "https://01cb-52-207-162-32.ngrok.io/bot";
 var historico = "";
 
 $(document).ready(function() {
@@ -127,7 +134,6 @@ $(document).ready(function() {
 });
 </script>
 
-
 <input type="hidden" id="nome" value="<?php echo "You are the assistant " . $URL; ?>">
 <input type="hidden" id="personalidade" value="<?php echo "use a tone of voice " . $personality; ?>">
 <input type="hidden" id="language" value="<?php echo "You speak in " . $language . " language" ?>">
@@ -140,7 +146,7 @@ $(document).ready(function() {
 	</div>
 	<div class="chat-message clearfix">
 		<div class="input-group mb-0 box-message-chat">
-			<input type="text" id="message" class="form-control" placeholder="Digite seu texto aqui...">
+			<input type="text" id="message" class="form-control" placeholder="<?php echo $lang['write_here']; ?>">
 			<div class="input-group-prepend">
 				<button class="input-group-text" id="submit"><i class="button-message fas fa-location-arrow"></i></button>
 			</div>
