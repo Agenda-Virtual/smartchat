@@ -55,9 +55,12 @@ $default_language = 'en';
 
 // Detect user's language preference
 if (isset($_SESSION['language'])) {
-    $acronym = $_SESSION['language'];
+    $acronym = sanitize_text_field($_SESSION['language']);
 } else {
-    $acronym = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+    $acronym = sanitize_text_field(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2));
+}
+if ( ! ctype_alpha( $acronym ) ) {
+   $acronym = 'en';
 }
 
 if (count($language_result) > 0) {
@@ -139,13 +142,26 @@ if ( !empty( $key_ver ) ) {
 	</div>
 </div>
 <?php
-if(isset($_POST['submit'])) { // verifique se o formulário foi enviado
-    $keycode = $_POST['key']; // obter o valor do campo de entrada
+if(isset($_POST['submit'])) {
+    $keycode = sanitize_text_field($_POST['key']);
+	if ( ! ctype_alnum( $keycode ) ) {
+		$keycode = NULL;
+	}
     $url = 'http://smartchat.agendavirtual.net/validation/?key=' . $keycode;
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    $resposta = curl_exec($ch);
+	$params = array();
+    $response = wp_remote_post( $url, array(
+		'method' => 'POST',
+		'body' => $params
+	) );
+
+	if ( is_wp_error( $response ) ) {
+		$error_message = $response->get_error_message();
+	} else {
+		$resposta = wp_remote_retrieve_body( $response );
+	}
     curl_close($ch);
 	
 	$inicio = strpos($resposta, "Value@:") + strlen("Value@:");
@@ -156,14 +172,12 @@ if(isset($_POST['submit'])) { // verifique se o formulário foi enviado
 if(isset($dados) && !empty($dados)) {
 	$results = $wpdb->get_results( "SELECT * FROM $table_name WHERE Features = 'key'" );
 	if ( count( $results ) > 0 ) {
-		// Atualiza o valor da coluna "Data"
 		$wpdb->update( $table_name, array(
 			'Data' => $dados,
 		), array(
 			'Features' => 'key',
 		) );
 	} else {
-		// Adiciona a linha "key" na coluna "Features" e insere o valor "123" na coluna "Data"
 		$wpdb->insert( $table_name, array(
 			'Features' => 'key',
 			'Data' => $dados,

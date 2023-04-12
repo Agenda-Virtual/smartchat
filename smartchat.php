@@ -3,7 +3,7 @@
 Plugin Name: Smartchat
 Plugin URI: https://smartchat.agendavirtual.net/plugin
 Description: Transforme a interação com seus clientes com nosso incrível plugin de assistente virtual, que utiliza a inteligência artificial do ChatGPT para fornecer respostas precisas e eficientes em tempo real. Insira facilmente informações importantes para que a assistente virtual possa personalizar as respostas de acordo com as necessidades dos usuários e aprimorar a experiência do cliente.
-Version: 2.1.4
+Version: 2.1.5
 Author: Smartchat
 Author URI: https://smartchat.agendavirtual.net
 License: GPL2
@@ -19,8 +19,7 @@ function plugin_smartchat() {
     $position_button = $wpdb->get_var("SELECT Data FROM $table_name WHERE Features = 'position'");
     $icon = $wpdb->get_var("SELECT Data FROM $table_name WHERE Features = 'icon'");
     
-    wp_enqueue_script( 'jquery-script', 'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js' );
-    wp_enqueue_script( 'bootstrap-script', 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js', array( 'jquery-script' ) );
+    wp_enqueue_script( 'bootstrap-script', plugin_dir_url( __FILE__ ) . 'public/js/bootstrap.bundle.min.js', array( 'jquery' ) );
     wp_enqueue_script( 'smartchat-script', plugin_dir_url( __FILE__ ) . 'public/js/smartchat-script.js', array( 'bootstrap-script' ), '2', true );
     wp_enqueue_style( 'smartchat-style', plugin_dir_url( __FILE__ ) . 'public/css/smartchat.css', array(), '1.4' );
 	wp_enqueue_style( 'smartchat-script', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css');
@@ -42,11 +41,11 @@ add_action( 'wp_enqueue_scripts', 'plugin_smartchat' );
 function smart_chat_admin_menu() {
 	global $pagenow;
 
+	wp_enqueue_style( 'smartchat-style', plugin_dir_url( __FILE__ ) . 'admin/css/admin-av.css', array(), '1.5', false );
+	wp_enqueue_style( 'smartchat-script', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css');
     if ( $pagenow === 'admin.php' && isset( $_GET['page'] ) && $_GET['page'] === 'smartchat-admin' ) {
-        wp_enqueue_style( 'smartchat-style', plugin_dir_url( __FILE__ ) . 'admin/css/admin-av.css', array(), '1.5', false );
-		wp_enqueue_script( 'jquery-script', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js', array(), '1.0', true );
+		wp_enqueue_script( 'jquery-script', plugin_dir_url( __FILE__ ) . 'public/js/bootstrap.bundle.min.js', array(), '1.0', true );
 		wp_enqueue_script( 'smartchat-script', plugin_dir_url( __FILE__ ) . 'admin/js/av_admin.js', array(), '1.4', true );
-		wp_enqueue_style( 'smartchat-script', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css');
     }
 
 	add_menu_page(
@@ -89,7 +88,7 @@ function smart_chat_html() {
     
     // Adicionando o script abaixo
     echo '<script type="text/javascript">';
-    echo '$("#message").on(\'keyup\', function (e) {
+    echo '$("#message").on(\'keypress\', function (e) {
             if (e.key === \'Enter\' || e.keyCode === 13) {
                 $("#submit").click();
                 $(\'#virtual-assistant-box\').scrollTop($(\'#virtual-assistant-box\')[0].scrollHeight);

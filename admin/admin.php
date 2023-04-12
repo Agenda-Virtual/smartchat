@@ -211,9 +211,12 @@ $default_language = 'en';
 
 // Detect user's language preference
 if (isset($_SESSION['language'])) {
-    $acronym = $_SESSION['language'];
+    $acronym = sanitize_text_field($_SESSION['language']);
 } else {
-    $acronym = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+    $acronym = sanitize_text_field(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2));
+}
+if ( ! ctype_alpha( $acronym ) ) {
+   $acronym = 'en';
 }
 
 if (count($language_result) > 0) {

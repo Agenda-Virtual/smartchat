@@ -66,7 +66,7 @@ if ( empty( $key ) ) {
 var url = "https://wsgi.agendavirtual.net/bot";
 var historico = "";
 
-$(document).ready(function() {
+jQuery(document).ready(function($) {
 
     $("#submit").click(function() {
         var message = $("#message").val();
@@ -131,6 +131,13 @@ $(document).ready(function() {
 		});
 		$("#message").val("");
 	});
+	$("#message").on('keypress', function (e) {
+	  if (e.key === 'Enter' || e.keyCode === 13) {
+		e.preventDefault();
+		$("#submit").click();
+		$('#virtual-assistant-box').scrollTop($('#virtual-assistant-box')[0].scrollHeight);
+	  }
+	});
 });
 </script>
 
@@ -159,4 +166,3 @@ $(document).ready(function() {
 		<?php }; ?>
 	</div>
 </div>
-
