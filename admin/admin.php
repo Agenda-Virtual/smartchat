@@ -1,8 +1,3 @@
-<!-- Google Fonts -->
-<link rel="preconnect" href="//fonts.googleapis.com">
-<link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-
 <?php
 global $wpdb;
 $charset_collate = $wpdb->get_charset_collate();
@@ -251,7 +246,7 @@ if ( empty( $key ) ) {
 					</div>
 					<div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
 						<div class="nav-wrapper position-relative end-0 text-center">
-							<label class="form-control-label" for="language"><?php echo strtoupper($lang['language']); ?></label></br>
+							<label class="form-control-label" for="language"><?php echo esc_attr(strtoupper($lang['language'])); ?></label></br>
 							<!-- idioma -->				
 							<div class="col-md-12">
 								<div class="form-group">
@@ -270,31 +265,31 @@ if ( empty( $key ) ) {
 	
 			<div class="container-fluid py-4 centralizar">				
 				<div class="card container-fluid">
-					<h5 class="opacity-9 centralizar"><?php echo $lang['title']; ?></h5>
+					<h5 class="opacity-9 centralizar"><?php echo esc_attr($lang['title']); ?></h5>
 					<hr class="horizontal dark mt-1 mb-3">
 					<div class="card-body pt-4 p-3">
 							<div class="row">
 								<!-- Nome de usuário -->				
 								<div class="col-md-4">
 									<div class="form-group">
-										<label class="form-control-label" for="url"><?php echo $lang['assistant_name']; ?></label>
-										<input class="form-control" value="<?php echo esc_attr($url); ?>" placeholder="<?php echo $lang['assistant_name_placeholder']; ?>" type="text" name="url" required="" autocomplete="off" autofocus="">
+										<label class="form-control-label" for="url"><?php echo esc_attr($lang['assistant_name']); ?></label>
+										<input class="form-control" value="<?php echo esc_attr($url); ?>" placeholder="<?php echo esc_attr($lang['assistant_name_placeholder']); ?>" type="text" name="url" required="" autocomplete="off" autofocus="">
 									</div>
 								</div>
 								
 								<!-- Personalidade -->	
 								<div class="col-md-8">
 									<div class="form-group">
-										<label class="form-control-label" for="personality"><?php echo $lang['speaking_style']; ?></label></br>
+										<label class="form-control-label" for="personality"><?php echo esc_attr($lang['speaking_style']); ?></label></br>
 										<select class="form-control" name="personality" required>
-											<option value="formal, respectful, and professional" <?php echo ($personality === 'formal, respectful, and professional') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_formal']; ?></option>
-											<option value="friendly, establishing an emotional connection" <?php echo ($personality === 'friendly, establishing an emotional connection') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_friendly']; ?></option>
-											<option value="fun, playful, and relaxed" <?php echo ($personality === 'fun, playful, and relaxed') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_fun']; ?></option>
-											<option value="polite, courteous, and refined" <?php echo ($personality === 'polite, courteous, and refined') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_polite']; ?></option>
-											<option value="technical, precise, and objective, providing detailed information" <?php echo ($personality === 'technical, precise, and objective, providing detailed information') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_technical']; ?></option>
-											<option value="empathetic, understanding, showing solidarity and concern" <?php echo ($personality === 'empathetic, understanding, showing solidarity and concern') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_empathetic']; ?></option>
-											<option value="youthful, relaxed, and informal" <?php echo ($personality === 'youthful, relaxed, and informal') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_youthful']; ?></option>
-											<option value="direct, offering brief and precise answers" <?php echo ($personality === 'direct, offering brief and precise answers') ? 'selected' : ''; ?>><?php echo $lang['speaking_style_direct']; ?></option>
+											<option value="formal, respectful, and professional" <?php echo ($personality === 'formal, respectful, and professional') ? 'selected' : ''; ?>><?php echo esc_attr($lang['speaking_style_formal']); ?></option>
+											<option value="friendly, establishing an emotional connection" <?php echo ($personality === 'friendly, establishing an emotional connection') ? 'selected' : ''; ?>><?php echo esc_attr($lang['speaking_style_friendly']); ?></option>
+											<option value="fun, playful, and relaxed" <?php echo ($personality === 'fun, playful, and relaxed') ? 'selected' : ''; ?>><?php echo esc_attr($lang['speaking_style_fun']); ?></option>
+											<option value="polite, courteous, and refined" <?php echo ($personality === 'polite, courteous, and refined') ? 'selected' : ''; ?>><?php echo esc_attr($lang['speaking_style_polite']); ?></option>
+											<option value="technical, precise, and objective, providing detailed information" <?php echo ($personality === 'technical, precise, and objective, providing detailed information') ? 'selected' : ''; ?>><?php echo esc_attr($lang['speaking_style_technical']); ?></option>
+											<option value="empathetic, understanding, showing solidarity and concern" <?php echo ($personality === 'empathetic, understanding, showing solidarity and concern') ? 'selected' : ''; ?>><?php echo esc_attr($lang['speaking_style_empathetic']); ?></option>
+											<option value="youthful, relaxed, and informal" <?php echo ($personality === 'youthful, relaxed, and informal') ? 'selected' : ''; ?>><?php echo esc_attr($lang['speaking_style_youthful']); ?></option>
+											<option value="direct, offering brief and precise answers" <?php echo ($personality === 'direct, offering brief and precise answers') ? 'selected' : ''; ?>><?php echo esc_attr($lang['speaking_style_direct']); ?></option>
 										  </select>
 									</div>
 								</div>
@@ -303,8 +298,8 @@ if ( empty( $key ) ) {
 								<!-- Informações -->				
 								<div class="col-md-12">
 									<div class="form-group">
-										<label class="form-control-label" for="info"><?php echo $lang['main_informations']; ?></label><label class="form-control-label text-muted"><?php echo $lang['maximum'] . " " . $max_info_characters . " " . $lang['characters']; ?></label></br>
-										<textarea class="form-control form-control-lg" name="info" rows="5" maxlength="<?php echo $max_info_characters; ?>" placeholder="<?php echo $lang['maximum_characters_placeholder']; ?>"><?php echo $info; ?></textarea>
+										<label class="form-control-label" for="info"><?php echo esc_attr($lang['main_informations']); ?></label><label class="form-control-label text-muted"><?php echo esc_attr($lang['maximum'] . " " . $max_info_characters . " " . $lang['characters']); ?></label></br>
+										<textarea class="form-control form-control-lg" name="info" rows="5" maxlength="<?php echo esc_attr($max_info_characters); ?>" placeholder="<?php echo esc_attr($lang['maximum_characters_placeholder']); ?>"><?php echo esc_attr($info); ?></textarea>
 									</div>
 								</div>
 							</div>
@@ -314,40 +309,40 @@ if ( empty( $key ) ) {
 								<!-- Cor do botão -->
 								<div class="col-md-3">
 									<div class="form-group">
-										<label class="form-control-label" for="cor"><?php echo $lang['button_color']; ?></label>
+										<label class="form-control-label" for="cor"><?php echo esc_attr($lang['button_color']); ?></label>
 										<input class="form-control form-control-solid" value="<?php echo esc_attr($cor); ?>" type="color" name="cor">
 									</div>
 								</div>
 								<!-- Icon Picker -->
 								<div class="col-md-3">
 									<div class="form-group">
-										<label class="form-control-label" for="cor"><?php echo $lang['choose_icon']; ?></label><br/>
+										<label class="form-control-label" for="cor"><?php echo esc_attr($lang['choose_icon']); ?></label><br/>
 										<button class="btn btn-secondary" data-placement="left" data-icon="<?php echo esc_attr($icon); ?>" role="iconpicker"></button>
 									</div>
 								</div>
 								<!-- Posição -->
 								<div class="col-md-6">
 									<div class="form-group">
-										<label class="form-control-label" for="position"><?php echo $lang['position']; ?></label></br>
+										<label class="form-control-label" for="position"><?php echo esc_attr($lang['position']); ?></label></br>
 										<select class="form-control" name="position" required>
-											<option value="inferior_direito" <?php echo ($position === 'inferior_direito') ? 'selected' : ''; ?>><?php echo $lang['position_bottom_right']; ?></option>
-											<option value="inferior_esquerdo" <?php echo ($position === 'inferior_esquerdo') ? 'selected' : ''; ?>><?php echo $lang['position_bottom_left']; ?></option>
-											<option value="superior_direito" <?php echo ($position === 'superior_direito') ? 'selected' : ''; ?>><?php echo $lang['position_top_right']; ?></option>
-											<option value="superior_esquerdo" <?php echo ($position === 'superior_esquerdo') ? 'selected' : ''; ?>><?php echo $lang['position_top_left']; ?></option>
+											<option value="inferior_direito" <?php echo ($position === 'inferior_direito') ? 'selected' : ''; ?>><?php echo esc_attr($lang['position_bottom_right']); ?></option>
+											<option value="inferior_esquerdo" <?php echo ($position === 'inferior_esquerdo') ? 'selected' : ''; ?>><?php echo esc_attr($lang['position_bottom_left']); ?></option>
+											<option value="superior_direito" <?php echo ($position === 'superior_direito') ? 'selected' : ''; ?>><?php echo esc_attr($lang['position_top_right']); ?></option>
+											<option value="superior_esquerdo" <?php echo ($position === 'superior_esquerdo') ? 'selected' : ''; ?>><?php echo esc_attr($lang['position_top_left']); ?></option>
 										  </select>
 									</div>
 								</div>
 							</div>
 							<div class="bg-gradient-secondary shadow border-radius-md pt-4 p-3">
 								<div class="row">
-									<h5 class="text-white opacity-9 centralizar"><?php echo $lang['pro_resources']; ?></h5>
+									<h5 class="text-white opacity-9 centralizar"><?php echo esc_attr($lang['pro_resources']); ?></h5>
 									<hr class="horizontal light mt-1 mb-3">
 									<!-- Tempo de resposta -->				
 									<div class="col-md-6">
 										<div class="form-group">
 											<div class="form-check form-switch ms-auto">
 												<input class="form-check-input" type="checkbox" id="time" name="time" value="1" <?php echo $time == '1' ? 'checked' : ''; ?> <?php echo $key != 1 ? 'disabled' : ''; ?>>
-												<label class="form-control-label text-white" for="time"><?php echo $lang['simulate_real_conversation']; ?><i class="fas fa-question-circle ms-1" title="<?php echo $lang['simulate_real_conversation_help']; ?>"></i></label></br>											
+												<label class="form-control-label text-white" for="time"><?php echo esc_attr($lang['simulate_real_conversation']); ?><i class="fas fa-question-circle ms-1" title="<?php echo esc_attr($lang['simulate_real_conversation_help']); ?>"></i></label></br>											
 											</div>
 										</div>
 									</div>
@@ -357,7 +352,7 @@ if ( empty( $key ) ) {
 										<div class="form-group">
 											<div class="form-check form-switch ms-auto">
 												<input class="form-check-input" type="checkbox" id="hide_logo" name="hide_logo" value="1" <?php echo $hide_logo == '1' ? 'checked' : ''; ?> <?php echo $key != 1 ? 'disabled' : ''; ?>>
-												<label class="form-control-label text-white" for="hide_logo"><?php echo $lang['hide_logo']; ?></label></br>
+												<label class="form-control-label text-white" for="hide_logo"><?php echo esc_attr($lang['hide_logo']); ?></label></br>
 											</div>
 										</div>
 									</div>
@@ -365,10 +360,10 @@ if ( empty( $key ) ) {
 							</div>
 							<div class="text-center">
 								<button type="submit" name="submit" id="kt_sign_in_submit" class="btn bg-gradient-primary mt-3 w-100">
-									<span class="indicator-label"><?php echo $lang['save']; ?></span>
+									<span class="indicator-label"><?php echo esc_attr($lang['save']); ?></span>
 								</button>
 							</div>		
-						<a href="<?php echo admin_url( 'admin.php?page=smartchat-pro-check' ); ?>"><?php echo $key != 1 ? $lang['pro_version'] : $lang['pro_version_active']; ?></a>
+						<a href="<?php echo esc_html(admin_url( 'admin.php?page=smartchat-pro-check' )); ?>"><?php echo $key != 1 ? $lang['pro_version'] : $lang['pro_version_active']; ?></a>
 					</div>
 				</div>
 			</div>

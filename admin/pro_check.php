@@ -1,8 +1,3 @@
-<!-- Google Fonts -->
-<link rel="preconnect" href="//fonts.googleapis.com">
-<link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-
 <?php
 global $wpdb;
 $charset_collate = $wpdb->get_charset_collate();
@@ -114,16 +109,16 @@ if ( !empty( $key_ver ) ) {
 												<i class="fas fa-check opacity-10" aria-hidden="true"></i>
 											</div>
 											<div>
-												<h4 class="ps-3 pt-1 opacity-8"><?php echo $lang['pro_version_active']; ?></h4>
+												<h4 class="ps-3 pt-1 opacity-8"><?php echo esc_attr($lang['pro_version_active']); ?></h4>
 											</div>
 										</div>
 									<?php }else{?>
 										<div class="m-3 centralizar">
-											<h6 class="mb-0"><?php echo $lang['key_code']; ?></h6>
+											<h6 class="mb-0"><?php echo esc_attr($lang['key_code']); ?></h6>
 										</div>
 									<?php }?>
-										<label class="form-control-label" for="url"><?php echo $lang['key_code']; ?></label>
-										<input class="form-control" value="<?php echo esc_attr($key_ver); ?>" placeholder="<?php echo $lang['key_code_here']; ?>" type="text" name="key" id="key" required autocomplete="off" autofocus="">
+										<label class="form-control-label" for="url"><?php echo esc_attr($lang['key_code']); ?></label>
+										<input class="form-control" value="<?php echo esc_attr($key_ver); ?>" placeholder="<?php echo esc_attr($lang['key_code_here']); ?>" type="text" name="key" id="key" required autocomplete="off" autofocus="">
 									</div>
 								</div>
 							</div>
@@ -131,10 +126,10 @@ if ( !empty( $key_ver ) ) {
 
 							<div class="text-center">
 								<button type="submit" name="submit" id="kt_sign_in_submit" class="btn bg-gradient-primary mt-3 w-100">
-									<span class="indicator-label"><?php echo $lang['save']; ?></span>
+									<span class="indicator-label"><?php echo esc_attr($lang['save']); ?></span>
 								</button>
 							</div>		
-						<a href="<?php echo admin_url( 'admin.php?page=smartchat-admin' ); ?>"><?php echo $lang['return']; ?></a>
+						<a href="<?php echo admin_url( 'admin.php?page=smartchat-admin' ); ?>"><?php echo esc_attr($lang['return']); ?></a>
 					</div>
 				</div>
 			</div>

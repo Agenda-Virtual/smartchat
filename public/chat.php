@@ -93,7 +93,7 @@ jQuery(document).ready(function($) {
 			historico = "";
 		}
 			if(<?php echo $time; ?> == 1){
-				$("#chat-log").append("<p class='typing'><span>Digitando...</span></p>");
+				$("#chat-log").append("<p class='typing'><span><?php echo esc_attr($lang['writing']); ?></span></p>");
 				$('#virtual-assistant-box').scrollTop($('#virtual-assistant-box')[0].scrollHeight);
 				var typingMessage = $(".typing span");
 				setTimeout(function() {
@@ -153,7 +153,7 @@ jQuery(document).ready(function($) {
 	</div>
 	<div class="chat-message clearfix">
 		<div class="input-group mb-0 box-message-chat">
-			<input type="text" id="message" class="form-control" placeholder="<?php echo $lang['write_here']; ?>">
+			<input type="text" id="message" class="form-control" placeholder="<?php echo esc_attr($lang['write_here']); ?>">
 			<div class="input-group-prepend">
 				<button class="input-group-text" id="submit"><i class="button-message fas fa-location-arrow"></i></button>
 			</div>
