@@ -5,7 +5,7 @@ Donate link: https://smartchat.agendavirtual.net/
 Tags: tecnologia, assistente virtual, ChatGPT, inteligência artificial, plugin, experiência interativa, personalização, atendimento ao cliente, respostas customizadas, botão flutuante, tempo real, usuários, informações importantes, perguntas repetitivas, experiência do usuário, agradável, reputação da marca, negócios, transformação, interação com o site
 Requires at least: 4.7
 Tested up to: 6.2
-Stable tag: 2.1.5
+Stable tag: 2.1.6
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -58,6 +58,12 @@ Q: O plugin de assistente virtual é fácil de usar?
 A: Sim, o plugin de assistente virtual possui um botão flutuante intuitivo e fácil de usar. Sua assistente virtual estará pronta para conversar com seus usuários em questão de minutos, sem a necessidade de treinamento técnico ou habilidades avançadas de programação.
 
 == Changelog ==
+
+= 2.1.6 =
+Todos os recursos liberados.
+
+= 2.1.5 =
+Melhorias de segurança implementadas.
 
 = 2.1.3 =
 Novos recursos incluídos.

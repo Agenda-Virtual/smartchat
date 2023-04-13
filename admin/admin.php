@@ -12,7 +12,14 @@ $sql = "CREATE TABLE $table_name (
 require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 dbDelta( $sql );
 
+ //Reply
+  $key = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'key'");
+  if ($key == NULL) {
+    $wpdb->insert($table_name, array('Features' => 'key', 'Data' => 'pro'));
+  }
+
 if (isset($_POST['submit'])) {
+  
   $url = sanitize_text_field($_POST['url']);
   $visible = sanitize_text_field($_POST['visible']);
   $icon = sanitize_text_field($_POST['icon']);
@@ -333,16 +340,13 @@ if ( empty( $key ) ) {
 									</div>
 								</div>
 							</div>
-							<div class="bg-gradient-secondary shadow border-radius-md pt-4 p-3">
 								<div class="row">
-									<h5 class="text-white opacity-9 centralizar"><?php echo esc_attr($lang['pro_resources']); ?></h5>
-									<hr class="horizontal light mt-1 mb-3">
 									<!-- Tempo de resposta -->				
 									<div class="col-md-6">
 										<div class="form-group">
 											<div class="form-check form-switch ms-auto">
 												<input class="form-check-input" type="checkbox" id="time" name="time" value="1" <?php echo $time == '1' ? 'checked' : ''; ?> <?php echo $key != 1 ? 'disabled' : ''; ?>>
-												<label class="form-control-label text-white" for="time"><?php echo esc_attr($lang['simulate_real_conversation']); ?><i class="fas fa-question-circle ms-1" title="<?php echo esc_attr($lang['simulate_real_conversation_help']); ?>"></i></label></br>											
+												<label class="form-control-label" for="time"><?php echo esc_attr($lang['simulate_real_conversation']); ?><i class="fas fa-question-circle ms-1" title="<?php echo esc_attr($lang['simulate_real_conversation_help']); ?>"></i></label></br>											
 											</div>
 										</div>
 									</div>
@@ -352,18 +356,16 @@ if ( empty( $key ) ) {
 										<div class="form-group">
 											<div class="form-check form-switch ms-auto">
 												<input class="form-check-input" type="checkbox" id="hide_logo" name="hide_logo" value="1" <?php echo $hide_logo == '1' ? 'checked' : ''; ?> <?php echo $key != 1 ? 'disabled' : ''; ?>>
-												<label class="form-control-label text-white" for="hide_logo"><?php echo esc_attr($lang['hide_logo']); ?></label></br>
+												<label class="form-control-label" for="hide_logo"><?php echo esc_attr($lang['hide_logo']); ?></label></br>
 											</div>
 										</div>
 									</div>
 								</div>
-							</div>
 							<div class="text-center">
 								<button type="submit" name="submit" id="kt_sign_in_submit" class="btn bg-gradient-primary mt-3 w-100">
 									<span class="indicator-label"><?php echo esc_attr($lang['save']); ?></span>
 								</button>
 							</div>		
-						<a href="<?php echo esc_html(admin_url( 'admin.php?page=smartchat-pro-check' )); ?>"><?php echo $key != 1 ? $lang['pro_version'] : $lang['pro_version_active']; ?></a>
 					</div>
 				</div>
 			</div>
