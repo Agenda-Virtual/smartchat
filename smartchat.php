@@ -3,7 +3,7 @@
 Plugin Name: Smartchat
 Plugin URI: https://smartchat.agendavirtual.net/plugin
 Description: Transforme a interação com seus clientes com nosso incrível plugin de assistente virtual, que utiliza a inteligência artificial do ChatGPT para fornecer respostas precisas e eficientes em tempo real. Insira facilmente informações importantes para que a assistente virtual possa personalizar as respostas de acordo com as necessidades dos usuários e aprimorar a experiência do cliente.
-Version: 2.1.8
+Version: 2.1.9
 Author: Smartchat
 Author URI: https://smartchat.agendavirtual.net
 License: GPL2
@@ -21,7 +21,7 @@ function plugin_smartchat() {
     
     wp_enqueue_script( 'bootstrap-script', plugin_dir_url( __FILE__ ) . 'public/js/bootstrap.bundle.min.js', array( 'jquery' ) );
     wp_enqueue_script( 'smartchat-script', plugin_dir_url( __FILE__ ) . 'public/js/smartchat-script.js', array( 'bootstrap-script' ), '2', true );
-    wp_enqueue_style( 'smartchat-style', plugin_dir_url( __FILE__ ) . 'public/css/smartchat.css', array(), '1.5.4' );
+    wp_enqueue_style( 'smartchat-style', plugin_dir_url( __FILE__ ) . 'public/css/smartchat.css', array(), '1.5.9' );
 	wp_enqueue_style( 'smartchat-script', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css');
 
     $data = array('url' => $url);

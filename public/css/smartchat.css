@@ -26,7 +26,7 @@
 .typing{
 	display: none;
 	position: absolute;
-    top: calc(100% + -85px);
+    top: calc(100% + -90px);
     left: 0;
     right: 0;
     text-align: center;
@@ -82,6 +82,7 @@
 
 .box-message-chat{
 	display: flex;
+	margin-bottom: 2px !important;
 }
 
 .box-chat-superior-esquerdo {
@@ -146,7 +147,7 @@
 }
 
 .chat .chat-history ul {
-    padding-bottom: 45px;
+    padding-bottom: 55px;
 }
 
 .chat .chat-history ul li {
@@ -180,7 +181,7 @@
     border-radius: 7px;
     display: inline-block;
     position: relative;
-	margin: 15px 15px 0 15px;
+	margin: 15px 15px 0 40px;
 }
 
 .chat .chat-history .message:after {

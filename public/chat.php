@@ -147,12 +147,12 @@ jQuery(document).ready(function($) {
 <input type="hidden" id="frase" value="<?php echo $info; ?>">
 <div class="chat">
 	<div class="chat-history">
-		<ul class="m-b-0">
+		<ul>
 			<div id="chat-log"></div>
 		</ul>
 	</div>
 	<div class="chat-message clearfix">
-		<div class="input-group mb-0 box-message-chat">
+		<div class="input-group box-message-chat">
 			<input type="text" id="message" class="form-control" placeholder="<?php echo esc_attr($lang['write_here']); ?>">
 			<div class="input-group-prepend">
 				<button class="input-group-text" id="submit"><i class="button-message fas fa-location-arrow"></i></button>
