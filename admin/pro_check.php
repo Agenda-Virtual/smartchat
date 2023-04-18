@@ -3,13 +3,6 @@ global $wpdb;
 $charset_collate = $wpdb->get_charset_collate();
 $table_name = $wpdb->prefix . 'smartchat';
 
-$sql = "CREATE TABLE $table_name (
-    ID INT(11) NOT NULL AUTO_INCREMENT,
-    Features VARCHAR(255) NOT NULL,
-    Data VARCHAR(1024) NOT NULL,
-    PRIMARY KEY (ID)
-) $charset_collate;";
-
 $languages = [
   'en_english' => 'English',
   'pt_portuguese' => 'Português',

@@ -21,7 +21,7 @@ function plugin_smartchat() {
     
     wp_enqueue_script( 'bootstrap-script', plugin_dir_url( __FILE__ ) . 'public/js/bootstrap.bundle.min.js', array( 'jquery' ) );
     wp_enqueue_script( 'smartchat-script', plugin_dir_url( __FILE__ ) . 'public/js/smartchat-script.js', array( 'bootstrap-script' ), '2', true );
-    wp_enqueue_style( 'smartchat-style', plugin_dir_url( __FILE__ ) . 'public/css/smartchat.css', array(), '1.4' );
+    wp_enqueue_style( 'smartchat-style', plugin_dir_url( __FILE__ ) . 'public/css/smartchat.css', array(), '1.5.2' );
 	wp_enqueue_style( 'smartchat-script', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css');
 
     $data = array('url' => $url);
@@ -39,33 +39,24 @@ add_action( 'wp_enqueue_scripts', 'plugin_smartchat' );
 
 //Area adminsitrativa do Plugin
 function smart_chat_admin_menu() {
-	global $pagenow;
+    global $pagenow;
 
-    if ( $pagenow === 'admin.php' && isset( $_GET['page'] ) && $_GET['page'] === 'smartchat-admin' ) {
-		wp_enqueue_style( 'smartchat-style', plugin_dir_url( __FILE__ ) . 'admin/css/admin-av.css', array(), '1.8', false );
-		wp_enqueue_style( 'smartchat-script', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css');
-		wp_enqueue_script( 'jquery-script', plugin_dir_url( __FILE__ ) . 'public/js/bootstrap.bundle.min.js', array(), '1.0', true );
-		wp_enqueue_script( 'smartchat-script', plugin_dir_url( __FILE__ ) . 'admin/js/av_admin.js', array(), '1.4', true );
-    }
+        wp_enqueue_style( 'smartchat-style', plugin_dir_url( __FILE__ ) . 'admin/css/admin-av.css', array(), '1.8', false );
+        wp_enqueue_style( 'fontawesome-style', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css');
+        wp_enqueue_script( 'jquery-script', plugin_dir_url( __FILE__ ) . 'public/js/bootstrap.bundle.min.js', array(), '1.0', true );
+        wp_enqueue_script( 'smartchat-script', plugin_dir_url( __FILE__ ) . 'admin/js/av_admin.js', array(), '1.4', true );
 
-	add_menu_page(
-		'Smartchat',
-		'Smartchat',
-		'manage_options',
-		'smartchat-admin',
-		'smart_chat_admin_page'
-	);
-
-	// Adicionando nova página
-	add_submenu_page(
-		'smartchat-admin',
-		'Pro Check',
-		'Pro Check',
-		'manage_options',
-		'smartchat-pro-check',
-		'smart_chat_pro_check_page'
-	);
+    add_menu_page(
+        'Smartchat',
+        'Smartchat',
+        'manage_options',
+        'smartchat-admin',
+        'smart_chat_admin_page',
+		'',
+		2
+    );
 }
+
 add_action( 'admin_menu', 'smart_chat_admin_menu' );
 
 function smart_chat_admin_page() {

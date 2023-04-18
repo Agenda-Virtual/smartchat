@@ -6,7 +6,7 @@ $table_name = $wpdb->prefix . 'smartchat';
 $sql = "CREATE TABLE $table_name (
     ID INT(11) NOT NULL AUTO_INCREMENT,
     Features VARCHAR(255) NOT NULL,
-    Data VARCHAR(1024) NOT NULL,
+    Data VARCHAR(2048) NOT NULL,
     PRIMARY KEY (ID)
 ) $charset_collate;";
 require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
   if (count($icon_result) > 0) {
     $wpdb->update($table_name, array('Data' =>$icon), array('Features' => 'icon'));
   } else {
-    $wpdb->insert($table_name, array('Features' => 'icon', 'Data' => $icon));
+    $wpdb->insert($table_name, array('Features' => 'icon', 'Data' => 'fas fa-comment'));
   }
 
   $url_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'URL'");
@@ -109,7 +109,7 @@ if (isset($_POST['submit'])) {
   }
 }
 
-$max_info_characters = "1000";
+$max_info_characters = "2000";
 
 // código para buscar os valores armazenados na tabela e preencher os campos correspondentes, caso existam
 
@@ -202,7 +202,6 @@ $languages = [
   'yo_yoruba' => 'Yorùbá',
   'zu_zulu' => 'isiZulu'*/
 ];
-asort($languages);
 
 // Store user's language preference
 $language_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'language'");

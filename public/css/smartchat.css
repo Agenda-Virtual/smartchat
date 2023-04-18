@@ -40,6 +40,8 @@
 
 .logo_box_chat{
 	filter: opacity(0.8);
+	text-align: -webkit-center;
+	margin: -7px 0 -11px 0;
 }
 
 .bottom-chat {
@@ -105,7 +107,7 @@
 .chat-message.clearfix {
 	position: fixed;
     left: auto;
-	padding: 290px 0 11px 15px;
+	padding: 0 0 10px 15px;
 	width: 285px;
 }
 
@@ -239,4 +241,8 @@
 
 .virtual-assistant-box::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+:focus-visible {
+  outline: none; /* ou outra propriedade de estilo desejada */
 }
