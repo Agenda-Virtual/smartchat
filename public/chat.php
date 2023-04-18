@@ -2,7 +2,7 @@
 <?php
 global $wpdb;
 $charset_collate = $wpdb->get_charset_collate();
-$table_name = $wpdb->prefix . 'virtual_assistant';
+$table_name = $wpdb->prefix . 'smartchat';
 
 $acronym_result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = 'acronym'");
 $default_language = 'pt';

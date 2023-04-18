@@ -3,7 +3,7 @@
 Plugin Name: Smartchat
 Plugin URI: https://smartchat.agendavirtual.net/plugin
 Description: Transforme a interação com seus clientes com nosso incrível plugin de assistente virtual, que utiliza a inteligência artificial do ChatGPT para fornecer respostas precisas e eficientes em tempo real. Insira facilmente informações importantes para que a assistente virtual possa personalizar as respostas de acordo com as necessidades dos usuários e aprimorar a experiência do cliente.
-Version: 2.1.6
+Version: 2.1.7
 Author: Smartchat
 Author URI: https://smartchat.agendavirtual.net
 License: GPL2
@@ -12,7 +12,7 @@ License: GPL2
 // Carrega o script JavaScript
 function plugin_smartchat() {
     global $wpdb;
-    $table_name = $wpdb->prefix . 'virtual_assistant';
+    $table_name = $wpdb->prefix . 'smartchat';
     $url = $wpdb->get_var("SELECT Data FROM $table_name WHERE Features = 'URL'");
     $visible = $wpdb->get_var("SELECT Data FROM $table_name WHERE Features = 'visible'");
     $cor = $wpdb->get_var("SELECT Data FROM $table_name WHERE Features = 'Cor'");
@@ -41,9 +41,9 @@ add_action( 'wp_enqueue_scripts', 'plugin_smartchat' );
 function smart_chat_admin_menu() {
 	global $pagenow;
 
-	wp_enqueue_style( 'smartchat-style', plugin_dir_url( __FILE__ ) . 'admin/css/admin-av.css', array(), '1.5', false );
-	wp_enqueue_style( 'smartchat-script', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css');
     if ( $pagenow === 'admin.php' && isset( $_GET['page'] ) && $_GET['page'] === 'smartchat-admin' ) {
+		wp_enqueue_style( 'smartchat-style', plugin_dir_url( __FILE__ ) . 'admin/css/admin-av.css', array(), '1.8', false );
+		wp_enqueue_style( 'smartchat-script', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css');
 		wp_enqueue_script( 'jquery-script', plugin_dir_url( __FILE__ ) . 'public/js/bootstrap.bundle.min.js', array(), '1.0', true );
 		wp_enqueue_script( 'smartchat-script', plugin_dir_url( __FILE__ ) . 'admin/js/av_admin.js', array(), '1.4', true );
     }
