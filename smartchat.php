@@ -21,7 +21,7 @@ function plugin_smartchat() {
     
     wp_enqueue_script( 'bootstrap-script', plugin_dir_url( __FILE__ ) . 'public/js/bootstrap.bundle.min.js', array( 'jquery' ) );
     wp_enqueue_script( 'smartchat-script', plugin_dir_url( __FILE__ ) . 'public/js/smartchat-script.js', array( 'bootstrap-script' ), '2', true );
-    wp_enqueue_style( 'smartchat-style', plugin_dir_url( __FILE__ ) . 'public/css/smartchat.css', array(), '1.5.2' );
+    wp_enqueue_style( 'smartchat-style', plugin_dir_url( __FILE__ ) . 'public/css/smartchat.css', array(), '1.5.4' );
 	wp_enqueue_style( 'smartchat-script', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css');
 
     $data = array('url' => $url);

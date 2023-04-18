@@ -142,12 +142,11 @@
 }
 
 .chat .chat-history {
-    padding: 15px;
     border-bottom: 2px solid #fff;
 }
 
 .chat .chat-history ul {
-    padding-bottom: 10px;
+    padding-bottom: 45px;
 }
 
 .chat .chat-history ul li {
@@ -181,6 +180,7 @@
     border-radius: 7px;
     display: inline-block;
     position: relative;
+	margin: 15px 15px 0 15px;
 }
 
 .chat .chat-history .message:after {
