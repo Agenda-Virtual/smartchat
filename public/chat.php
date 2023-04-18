@@ -161,7 +161,9 @@ jQuery(document).ready(function($) {
 		<?php 
 		if($hide_logo == 0){ ?>
 			<div class="logo_box_chat">
-				<img src="<?php echo plugin_dir_url( __FILE__ ) . 'img/logo_smartchat.png' ?>" alt="Logo Smartchat" width="70px">
+				<a href="https://smartchat.agendavirtual.net" target="_blank">
+					<img src="<?php echo plugin_dir_url( __FILE__ ) . 'img/logo_smartchat.png' ?>" alt="Logo Smartchat" width="70px">
+				</a>
 			</div>
 		<?php }; ?>
 	</div>
