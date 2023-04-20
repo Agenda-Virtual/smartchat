@@ -17,6 +17,21 @@ dbDelta( $sql );
   if ($key == NULL) {
     $wpdb->insert($table_name, array('Features' => 'key', 'Data' => 'pro'));
   }
+  
+$features = array(
+  array('name' => 'icon', 'data' => 'fas fa-comment'),
+  array('name' => 'language', 'data' => 'english'),
+  array('name' => 'acronym', 'data' => 'en'),
+  array('name' => 'Cor', 'data' => '#ff6600'),
+  array('name' => 'URL', 'data' => 'Smartchat')
+);
+
+foreach ($features as $feature) {
+  $result = $wpdb->get_results("SELECT * FROM $table_name WHERE Features = '".$feature['name']."'");
+  if ($result == NULL) {
+    $wpdb->insert($table_name, array('Features' => $feature['name'], 'Data' => $feature['data']));
+  }
+}
 
 if (isset($_POST['submit'])) {
   

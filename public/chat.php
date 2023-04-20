@@ -123,7 +123,7 @@ jQuery(document).ready(function($) {
 			}
 			setTimeout(function() {
 				$(".typing").remove();
-				$("#chat-log").append("<li class='clearfix'><p class='message other-message float-right' style='display:none'><b><?php echo $URL; ?>:</b> " + data + "</p></li>");
+				$("#chat-log").append("<li class='clearfix'><p class='message other-message float-right' style='display:none'><b><?php echo esc_attr($URL); ?>:</b> " + data + "</p></li>");
 				$(".message:last").fadeIn(150)
 				historico = data;
 				$('#virtual-assistant-box').scrollTop($('#virtual-assistant-box')[0].scrollHeight);
@@ -141,10 +141,10 @@ jQuery(document).ready(function($) {
 });
 </script>
 
-<input type="hidden" id="nome" value="<?php echo "You are the assistant " . $URL; ?>">
-<input type="hidden" id="personalidade" value="<?php echo "use a tone of voice " . $personality; ?>">
-<input type="hidden" id="language" value="<?php echo "You speak in " . $language . " language" ?>">
-<input type="hidden" id="frase" value="<?php echo $info; ?>">
+<input type="hidden" id="nome" value="<?php echo "You are the assistant " . esc_attr($URL); ?>">
+<input type="hidden" id="personalidade" value="<?php echo "use a tone of voice " . esc_attr($personality); ?>">
+<input type="hidden" id="language" value="<?php echo "You speak in " . esc_attr($language) . " language" ?>">
+<input type="hidden" id="frase" value="<?php echo esc_attr($info); ?>">
 <div class="chat">
 	<div class="chat-history">
 		<ul>

@@ -2,97 +2,107 @@
 
 Contributors: Smartchat
 Donate link: https://smartchat.agendavirtual.net/
-Tags: tecnologia, assistente virtual, ChatGPT, inteligência artificial, plugin, experiência interativa, personalização, atendimento ao cliente, respostas customizadas, botão flutuante, tempo real, usuários, informações importantes, perguntas repetitivas, experiência do usuário, agradável, reputação da marca, negócios, transformação, interação com o site
+Tags: technology, virtual assistant, ChatGPT, artificial intelligence, plugin, interactive experience, customization, customer service, custom responses, floating button, real-time, users, important information, repetitive questions, user experience, pleasant, brand reputation, business, transformation, site interaction
 Requires at least: 4.7
 Tested up to: 6.2
-Stable tag: 2.1.9
+Stable tag: 2.2.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Personalize a experiência do usuário em seu site com nossa assistente virtual alimentada pela inteligência artificial do ChatGPT. Adicione informações importantes sobre seu negócio e fornecemos respostas precisas e eficientes em tempo real para os usuários do seu site.
+Personalize the user experience on your site with the ChatGPT-powered virtual assistant of Smartchat. Add important information about your business and we provide accurate and efficient real-time answers for your users.
 
-== Instalação ==
+== Installation ==
 
-Faça o download do plugin Smartchat para WordPress.
-Faça o upload do plugin para o diretório /wp-content/plugins/ do seu site.
-Ative o plugin por meio do menu "Plugins" no WordPress.
+Download the Smartchat plugin for WordPress.
+Upload the plugin to the /wp-content/plugins/ directory of your site.
+Activate the plugin through the "Plugins" menu in WordPress.
 
-== Como usar ==
+== How to Use ==
 
-Para usar o plugin Smartchat, basta preencher as informações solicitadas na guia "Smartchat" no menu da área administrativa de seu site Wordpress e o botão flutuante aparecerá nas páginas de seu site.
+To use the Smartchat plugin, simply fill in the requested information in the "Smartchat" tab in the administrative area menu of your WordPress site, and the floating button will appear on your site pages.
 
-== Requisitos ==
+== Languages available ==
 
-O plugin Smartchat requer a versão mínima do WordPress 4.9.0.
-O plugin requer a versão mínima do PHP 5.6.
+The plugin is available in the following languages:
 
-== Suporte ==
+- English (default)
+- Brazilian Portuguese
+- Spanish
+- German
+- Italian
+- French
 
-Para obter suporte, entre em contato com a equipe da Smartchat por meio do formulário de contato em nosso site.
+== Requirements ==
+
+The Smartchat plugin requires a minimum version of WordPress 4.9.0.
+The plugin requires a minimum version of PHP 5.6.
+
+== Support ==
+
+For support, contact the Smartchat team through the contact form on our site.
 
 == Frequently Asked Questions ==
 
-Q: O plugin Smartchat é gratuito?
-A: Sim, o plugin Smartchat é gratuito para download e uso com recursos pagos opcionais.
+Q: Is the Smartchat plugin free?
+A: Yes, the Smartchat plugin is free to download and use with optional paid features.
 
-Q: Posso personalizar a aparência do botão de agendamento?
-A: Sim, você pode personalizar a aparência do botão por meio das configurações do plugin.
+Q: Can I customize the appearance of the scheduling button?
+A: Yes, you can customize the appearance of the button through the plugin settings.
 
-Q: O plugin Smartchat funciona em dispositivos móveis?
-A: Sim, o plugin Smartchat é responsivo e funciona em dispositivos móveis.
+Q: Does the Smartchat plugin work on mobile devices?
+A: Yes, the Smartchat plugin is responsive and works on mobile devices.
 
-Q: Como funciona o plugin de assistente virtual alimentado pela inteligência artificial do ChatGPT?
-A: O plugin de assistente virtual utiliza a tecnologia do ChatGPT para criar uma experiência interativa e personalizada para os clientes do site. As informações importantes sobre o negócio podem ser inseridas para que a assistente virtual formule respostas customizadas para as necessidades dos usuários.
+Q: How does the ChatGPT-powered virtual assistant plugin work?
+A: The virtual assistant plugin uses ChatGPT technology to create an interactive and personalized experience for site customers. Important information about the business can be entered so that the virtual assistant can formulate custom responses for users' needs.
 
-Q: Como a assistente virtual ajuda a melhorar a experiência do usuário?
-A: Com a assistente virtual, os usuários podem receber respostas precisas e eficientes em tempo real, sem a necessidade de esperar por um atendimento humano. Isso torna a experiência do usuário mais agradável e melhora a reputação da marca.
+Q: How does the virtual assistant help improve the user experience?
+A: With the virtual assistant, users can receive accurate and efficient real-time answers without having to wait for human service. This makes the user experience more pleasant and improves brand reputation.
 
-Q: Posso personalizar a assistente virtual de acordo com a minha marca?
-A: Sim, o plugin de assistente virtual é altamente personalizável. Você pode inserir informações sobre seu negócio para fornecer respostas customizadas e adaptar a aparência do botão flutuante para se adequar à sua marca.
+Q: Can I customize the virtual assistant according to my brand?
+A: Yes, the virtual assistant plugin is highly customizable. You can enter information about your business to provide custom responses and tailor the appearance of the floating button to fit your brand.
 
-Q: Como a assistente virtual ajuda a economizar tempo e recursos?
-A: Com a assistente virtual, não há necessidade de contratar uma equipe de atendimento ao cliente ou ficar sobrecarregado com perguntas repetitivas. A assistente virtual está sempre pronta para ajudar seus clientes, permitindo que você se concentre em expandir seus negócios com o poder da inteligência artificial.
+Q: How does the virtual assistant help save time and resources?
+A: With the virtual assistant, there is no need to hire a customer service team or be overwhelmed with repetitive questions. The virtual assistant is always ready to help your customers, allowing you to focus on expanding your business with the power of artificial intelligence.
 
-Q: O plugin de assistente virtual é fácil de usar?
-A: Sim, o plugin de assistente virtual possui um botão flutuante intuitivo e fácil de usar. Sua assistente virtual estará pronta para conversar com seus usuários em questão de minutos, sem a necessidade de treinamento técnico ou habilidades avançadas de programação.
+Q: Is the virtual assistant plugin easy to use?
+A: Yes, the virtual assistant plugin has an intuitive and easy-to-use floating button. Your virtual assistant will be ready to chat with your users in minutes, without the need for technical training or advanced programming skills.
 
 == Changelog ==
 
+= 2.2.1 =
+Improved translations.
+
+= 2.2.0 =
+Bug fixes and security implementations.
+
 = 2.1.6 =
-Todos os recursos liberados.
+All features released.
+
+= 2.1.6 =
+All features released.
 
 = 2.1.5 =
-Melhorias de segurança implementadas.
+Security improvements implemented.
 
 = 2.1.3 =
-Novos recursos incluídos.
-
-= 2.1.0 =
-Correções de bugs.
-
-= 2.0.5 =
-Novos recursos incorporados.
-
-= 2.0.1 =
-Corrigido problema de compatibilidade com algumas versões do WordPress.
+New features included.
 
 = 2.0.0 =
-Nova versão do plugin Smartchat para WordPress.
+New version of the Smartchat plugin for WordPress.
 
-== Créditos ==
+== Credits ==
 
-O plugin Smartchat foi desenvolvido por Smartchat. Agradecemos a todos os usuários que forneceram feedback e contribuíram para melhorias no plugin.
+The Smartchat plugin was developed by Smartchat. We thank all the users who provided feedback and contributed to improvements in the plugin.
 
-== Notas adicionais ==
+== Additional Notes ==
 
-O plugin Smartchat é distribuído sob a Licença GPL2.
+The Smartchat plugin is distributed under the GPL2 License.
 
 GNU GENERAL PUBLIC LICENSE
 Version 2, June 1991
 
-Copyright (C) 1989, 1991 Free Software Foundation, Inc.
-59 Temple Place - Suite 330, Boston, MA  02111-1307, USA
-
+Copyright (C) 1989, 1991 Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 Everyone is permitted to copy and distribute verbatim copies
 of this license document, but changing it is not allowed.
