@@ -5,7 +5,7 @@ Donate link: https://smartchat.agendavirtual.net/
 Tags: technology, virtual assistant, ChatGPT, artificial intelligence, plugin, interactive experience, customization, customer service, custom responses, floating button, real-time, users, important information, repetitive questions, user experience, pleasant, brand reputation, business, transformation, site interaction
 Requires at least: 4.7
 Tested up to: 6.2
-Stable tag: 2.2.1
+Stable tag: 2.2.4
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html

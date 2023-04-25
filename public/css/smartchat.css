@@ -16,14 +16,41 @@
   transform: scale(1.1);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
-
-#message{
-	flex: 1;
-	padding: 6px 12px;
-	border-radius: 5px 0 0 5px;
+#smc-submit{
+	border-radius: 0 8px 8px 0;
+	color: #ffffff;
+    padding-top: 15px;
+    padding-right: 26px;
+    padding-bottom: 15px;
+    padding-left: 26px;
+    font-size: 1rem;
+    line-height: 1em;
+    background-color: #046bd2;
 }
 
-.typing{
+#smc-message{
+	flex: 1;
+	padding: 6px 12px;
+	border-radius: 8px 0 0 8px;
+	min-height: 0;
+}
+
+#smc-message:focus-visible {
+    border-style: solid;
+    border-color: #3483fa;
+    border-width: 1.5px;
+    transition: border-color .2s
+}
+
+:focus-visible {
+	outline:none;
+    border-style: solid;
+    border-color: #3483fa;
+    border-width: 1.5px;
+    transition: border-color .2s
+}
+
+.smc-typing{
 	display: none;
 	position: absolute;
     top: calc(100% + -90px);
@@ -31,24 +58,24 @@
     right: 0;
     text-align: center;
     font-size: 14px;
-    color: #9a9a9a;
+    color: #5e5e5e;
 }
 
-.typing.show {
+.smc-typing.show {
   display: block;
 }
 
-.logo_box_chat{
+.smc-logo_box_chat{
 	filter: opacity(0.8);
 	text-align: -webkit-center;
 	margin: -7px 0 -11px 0;
 }
 
-.bottom-chat {
+.smc-bottom-chat {
   bottom: 22px;
 }
 
-.top-chat {
+.smc-top-chat {
   top: 92px;
 }
 
@@ -63,7 +90,7 @@
 	left: 20px;
 }
 
-.box-chat-inferior-esquerdo {
+.smc-box-chat-inferior-esquerdo {
 	left: 110px;
 }
 
@@ -71,7 +98,7 @@
 	top: 32px;
 }
 
-.box-chat-superior-direito {
+.smc-box-chat-superior-direito {
 	top: 32px;
 }
 
@@ -80,12 +107,12 @@
 	top: 32px;
 }
 
-.box-message-chat{
+.smc-box-message-chat{
 	display: flex;
 	margin-bottom: 2px !important;
 }
 
-.box-chat-superior-esquerdo {
+.smc-box-chat-superior-esquerdo {
 	left: 110px;
 	top: 32px;
 }
@@ -105,14 +132,14 @@
 	box-shadow: 1px 1px 6px #3b3b3b78;
 }
 
-.chat-message.clearfix {
+.smc-chat-message.smc-clearfix {
 	position: fixed;
     left: auto;
 	padding: 0 0 10px 15px;
 	width: 285px;
 }
 
-.chat-app .people-list {
+.smc-chat-app .smc-people-list {
     width: 280px;
     position: absolute;
     left: 0;
@@ -121,70 +148,70 @@
     z-index: 7
 }
 
-.chat-app .chat {
+.smc-chat-app .smc-chat {
     margin-left: 280px;
     border-left: 1px solid #eaeaea
 }
 
-.chat .chat-header {
+.smc-chat .smc-chat-header {
     padding: 15px 20px;
     border-bottom: 2px solid #f4f7f6
 }
 
-.chat .chat-header img {
+.smc-chat .smc-chat-header img {
     float: left;
     border-radius: 40px;
     width: 40px
 }
 
-.chat .chat-header .chat-about {
+.smc-chat .smc-chat-header .smc-chat-about {
     float: left;
     padding-left: 10px
 }
 
-.chat .chat-history {
+.smc-chat .smc-chat-history {
     border-bottom: 2px solid #fff;
 }
 
-.chat .chat-history ul {
-    padding-bottom: 55px;
+.smc-chat .smc-chat-history ul {
+    padding-bottom: 70px;
 }
 
-.chat .chat-history ul li {
+.smc-chat .smc-chat-history ul li {
     list-style: none;
 }
 
-.chat .chat-history ul li:last-child {
+.smc-chat .smc-chat-history ul li:last-child {
     margin-bottom: 0px
 }
 
-.chat .chat-history .message-data {
+.smc-chat .smc-chat-history .smc-message-data {
     margin-bottom: 15px;
 	margin-right: 5%
 }
 
-.chat .chat-history .message-data img {
+.smc-chat .smc-chat-history .smc-message-data img {
     border-radius: 40px;
     width: 40px
 }
 
-.chat .chat-history .message-data-time {
+.smc-chat .smc-chat-history .smc-message-data-time {
     color: #434651;
     padding-left: 6px
 }
 
-.chat .chat-history .message {
+.smc-chat .smc-chat-history .smc-message {
     color: #444;
     padding: 18px 20px;
     line-height: 26px;
     font-size: 16px;
-    border-radius: 7px;
+    border-radius: 8px;
     display: inline-block;
     position: relative;
-	margin: 15px 15px 0 40px;
+	margin: 15px 0 0 40px;
 }
 
-.chat .chat-history .message:after {
+.smc-chat .smc-chat-history .smc-message:after {
     bottom: 100%;
     left: 7%;
     border: solid transparent;
@@ -198,33 +225,29 @@
     margin-left: -10px;
 }
 
-.chat .chat-history .my-message {
+.smc-chat .smc-chat-history .smc-my-message {
     background: #efefef;
 	right: 40px;
 }
 
-.chat .chat-history .other-message {
+.smc-chat .smc-chat-history .smc-other-message {
     background: #e8f1f3;
     text-align: right;
 }
 
-.chat .chat-history .other-message:after {
+.smc-chat .smc-chat-history .smc-other-message:after {
     border-bottom-color: #e8f1f3;
     left: 93%;
 }
 
-.input-group>.input-group-append>.btn, .input-group>.input-group-append>.input-group-text, .input-group>.input-group-prepend:first-child>.btn:not(:first-child), .input-group>.input-group-prepend:first-child>.input-group-text:not(:first-child), .input-group>.input-group-prepend:not(:first-child)>.btn, .input-group>.input-group-prepend:not(:first-child)>.input-group-text{
-	border-radius: 0 5px 5px 0;
-	padding: 15px 30px 15px 12px;
-}
-
-.icon{
+.smc-icon{
 	zoom: 2;
 	margin-top: 12px;
 }
 
-.button-message{
+.smc-button-message{
 	width: 0px;
+    margin: 0 5px 0 -10px;	
 }
 
 .virtual-assistant-box::-webkit-scrollbar {
@@ -243,7 +266,19 @@
 .virtual-assistant-box::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-
-:focus-visible {
-  outline: none; /* ou outra propriedade de estilo desejada */
+.smc-box-chat-log {
+	margin: 0;
+    padding: 0 15px 0 15px;
+}
+@media screen and (max-width: 415px) {
+	.virtual-assistant-box {
+		width: 100%;
+		bottom: 100px;
+		right: 0px;
+	}
+	.smc-chat-message.smc-clearfix.smc-bottom-chat {
+		width: 100%;
+		bottom: 104px;
+		right: 7px;
+	}
 }
